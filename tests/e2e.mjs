@@ -99,6 +99,25 @@ await test("shared order link round-trips into another cart", async () => {
   await p.context().close();
 });
 
+for (const scheme of ["light", "dark"]) {
+  await test(`no WCAG 2 A/AA violations (axe-core, ${scheme})`, async () => {
+    let axeSrc;
+    try { axeSrc = await (await fetch("https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js")).text(); }
+    catch { results.push("  (axe-core unavailable offline, skipped)"); return; }
+    const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, colorScheme: scheme, reducedMotion: "reduce" });
+    await ctx.addInitScript(() => { try { localStorage.setItem("eb-welcome", '{"state":"dismissed"}'); } catch {} });
+    const p = await ctx.newPage();
+    await p.route("**/api.open-meteo.com/**", (r) => r.abort());
+    await p.route("**/images.unsplash.com/**", (r) => r.fulfill({ status: 204 }));
+    await p.goto(BASE); await p.waitForTimeout(400);
+    await p.evaluate(() => document.querySelectorAll(".reveal").forEach((e) => e.classList.add("in")));
+    await p.addScriptTag({ content: axeSrc });
+    const v = await p.evaluate(async () => (await axe.run(document, { runOnly: ["wcag2a", "wcag2aa"] })).violations.map((x) => `${x.id} (${x.nodes.length}): ${x.nodes[0].target.join(" ")}`));
+    assert(!v.length, v.join("; "));
+    await ctx.close();
+  });
+}
+
 await browser.close();
 server.close();
 console.log(results.join("\n"));

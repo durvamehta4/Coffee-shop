@@ -1551,3 +1551,17 @@ p { text-wrap: pretty; }
 }
 @media (prefers-reduced-motion: reduce) { .hero-bg, .wisp { animation: none; } .hero-steam { display: none; } }
 @media (max-width: 800px) { .hero-steam { left: 20%; width: 70vw; height: 50%; } }
+
+/* ---------- Team ---------- */
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+.barista { background: var(--surface); border-radius: 22px; padding: 1.5rem 1.25rem; text-align: center; box-shadow: var(--shadow); display: flex; flex-direction: column; align-items: center; gap: 0.3rem; transition: transform 0.25s; }
+.barista:hover { transform: translateY(-5px) rotate(-0.5deg); }
+.avatar-art { width: 96px; height: 96px; margin-bottom: 0.5rem; }
+.barista h3 { margin: 0; font-size: 1.4rem; }
+.b-role { margin: 0; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--caramel); font-weight: 700; }
+.b-fact { margin: 0.4rem 0; font-size: 0.88rem; color: var(--muted); font-style: italic; flex: 1; }
+.b-pick { display: grid; gap: 0.1rem; padding: 0.6rem 0.8rem; border-radius: 12px; background: var(--bg-alt); width: 100%; margin-bottom: 0.5rem; }
+.b-pick small { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.b-pick strong { font-size: 0.9rem; }
+@media (max-width: 1000px) { .team-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .team-grid { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 80%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 0.5rem; } .barista { scroll-snap-align: center; } }

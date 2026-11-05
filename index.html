@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ember &amp; Bean Coffee</title>
+  <meta name="description" content="Ember & Bean — small-batch roasted coffee, fresh pastries, and a cozy place to stay a while." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header / navigation -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#home" class="logo">Ember <span>&amp;</span> Bean</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" aria-label="Main">
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#visit">Visit</a>
+        <a href="#contact" class="btn btn-small">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <div class="container hero-content">
+        <p class="eyebrow">Small-batch · Roasted in house</p>
+        <h1>Good coffee,<br />slow mornings.</h1>
+        <p class="lead">Freshly roasted beans, handmade pastries, and a warm corner to settle into. Come in and stay a while.</p>
+        <div class="hero-actions">
+          <a href="#menu" class="btn">See the menu</a>
+          <a href="#visit" class="btn btn-outline">Find us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="container about">
+        <div class="about-text">
+          <h2>Our story</h2>
+          <p>Ember &amp; Bean started in 2018 with a single roaster and a simple idea: coffee should taste like where it came from. We source directly from small farms, roast in small batches every week, and brew every cup to order.</p>
+          <p>Whether you need a quick espresso on the way to work or a quiet table for the afternoon, we're glad you're here.</p>
+        </div>
+        <ul class="features">
+          <li><span class="feature-icon" aria-hidden="true">☕</span><div><h3>Roasted weekly</h3><p>Beans never more than 7 days from roast.</p></div></li>
+          <li><span class="feature-icon" aria-hidden="true">🌱</span><div><h3>Direct trade</h3><p>Fair prices paid straight to growers.</p></div></li>
+          <li><span class="feature-icon" aria-hidden="true">🥐</span><div><h3>Baked daily</h3><p>Pastries made fresh every morning.</p></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Menu -->
+    <section id="menu" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Menu</h2>
+        <div class="menu-tabs" role="tablist">
+          <button class="tab active" role="tab" aria-selected="true" data-tab="coffee">Coffee</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="tea">Tea &amp; More</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="food">Food</button>
+        </div>
+
+        <div class="menu-panel active" id="coffee" role="tabpanel">
+          <div class="menu-item"><div><h3>Espresso</h3><p>Double shot of our house blend.</p></div><span class="price">$3.00</span></div>
+          <div class="menu-item"><div><h3>Americano</h3><p>Espresso lengthened with hot water.</p></div><span class="price">$3.50</span></div>
+          <div class="menu-item"><div><h3>Cappuccino</h3><p>Equal parts espresso, milk and foam.</p></div><span class="price">$4.25</span></div>
+          <div class="menu-item"><div><h3>Flat White</h3><p>Velvety microfoam over a double ristretto.</p></div><span class="price">$4.50</span></div>
+          <div class="menu-item"><div><h3>Latte</h3><p>Espresso with steamed milk. Add vanilla or caramel +$0.50.</p></div><span class="price">$4.75</span></div>
+          <div class="menu-item"><div><h3>Pour Over</h3><p>Single-origin, brewed by hand. Ask about today's beans.</p></div><span class="price">$5.00</span></div>
+          <div class="menu-item"><div><h3>Cold Brew</h3><p>Steeped 18 hours, smooth and chocolatey.</p></div><span class="price">$4.50</span></div>
+          <div class="menu-item"><div><h3>Mocha</h3><p>Espresso, dark chocolate and steamed milk.</p></div><span class="price">$5.25</span></div>
+        </div>
+
+        <div class="menu-panel" id="tea" role="tabpanel">
+          <div class="menu-item"><div><h3>Chai Latte</h3><p>House-spiced chai with steamed milk.</p></div><span class="price">$4.75</span></div>
+          <div class="menu-item"><div><h3>Matcha Latte</h3><p>Ceremonial-grade matcha, lightly sweetened.</p></div><span class="price">$5.00</span></div>
+          <div class="menu-item"><div><h3>Loose-Leaf Tea</h3><p>Earl Grey, green, chamomile or peppermint.</p></div><span class="price">$3.25</span></div>
+          <div class="menu-item"><div><h3>Hot Chocolate</h3><p>Rich dark chocolate, topped with whipped cream.</p></div><span class="price">$4.00</span></div>
+        </div>
+
+        <div class="menu-panel" id="food" role="tabpanel">
+          <div class="menu-item"><div><h3>Butter Croissant</h3><p>Flaky, golden, baked this morning.</p></div><span class="price">$3.50</span></div>
+          <div class="menu-item"><div><h3>Blueberry Muffin</h3><p>Bursting with berries and a crumb top.</p></div><span class="price">$3.25</span></div>
+          <div class="menu-item"><div><h3>Avocado Toast</h3><p>Sourdough, smashed avocado, chili flakes.</p></div><span class="price">$8.50</span></div>
+          <div class="menu-item"><div><h3>Breakfast Sandwich</h3><p>Egg, cheddar and bacon or spinach on a brioche bun.</p></div><span class="price">$7.75</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visit -->
+    <section id="visit" class="section">
+      <div class="container visit">
+        <div>
+          <h2>Visit us</h2>
+          <p class="address">123 Roast Street<br />Brewtown, CA 90210</p>
+          <p><a href="tel:+15555550123">(555) 555-0123</a></p>
+        </div>
+        <div>
+          <h3>Hours</h3>
+          <table class="hours">
+            <tr><td>Monday – Friday</td><td>7:00 am – 6:00 pm</td></tr>
+            <tr><td>Saturday</td><td>8:00 am – 5:00 pm</td></tr>
+            <tr><td>Sunday</td><td>8:00 am – 3:00 pm</td></tr>
+          </table>
+          <p class="open-status" id="open-status"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section section-alt">
+      <div class="container contact">
+        <h2 class="section-title">Say hello</h2>
+        <p class="section-sub">Questions, catering, or just want to chat about coffee? Drop us a note.</p>
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+          <div class="field field-full">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send message</button>
+          <p class="form-status" id="form-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Ember &amp; Bean Coffee. Brewed with care.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

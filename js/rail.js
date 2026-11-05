@@ -1,7 +1,7 @@
 // Chapter rail: right-edge dots for long-page navigation (desktop), highlights the current section.
 (function () {
   const CH = [["home", "Welcome"], ["menu", "Menu"], ["find", "Find your cup"], ["reviews", "Reviews"], ["rewards", "Ember Club"],
-    ["beans", "Beans"], ["brew-guide", "Brew guide"], ["gifts", "Gift cards"], ["events", "Events"], ["about", "Our story"], ["visit", "Visit"], ["faq", "FAQ"], ["contact", "Catering"]];
+    ["beans", "Beans"], ["brew-guide", "Brew guide"], ["gifts", "Gift cards"], ["events", "Events"], ["about", "Our story"], ["planet", "Planet"], ["visit", "Visit"], ["faq", "FAQ"], ["contact", "Catering"]];
   const rail = document.createElement("nav");
   rail.className = "rail"; rail.setAttribute("aria-label", "Page sections");
   rail.innerHTML = CH.map(([id, l]) => `<a href="#${id}" data-ch="${id}"><span>${l}</span></a>`).join("");

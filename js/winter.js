@@ -17,7 +17,7 @@
 
   // Snow
   const cv = document.getElementById("snow");
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches || !cv.getContext) return;
+  if ((matchMedia("(prefers-reduced-motion: reduce)").matches || document.documentElement.classList.contains("calm")) || !cv.getContext) return;
   const ctx = cv.getContext("2d");
   let flakes = [], w, h, running = false;
   function size() {

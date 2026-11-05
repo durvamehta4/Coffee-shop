@@ -8,7 +8,7 @@
   }));
 
   function confetti() {
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if ((matchMedia("(prefers-reduced-motion: reduce)").matches || document.documentElement.classList.contains("calm"))) return;
     const cv = document.createElement("canvas"); cv.className = "confetti";
     document.body.appendChild(cv);
     const ctx = cv.getContext("2d"), d = devicePixelRatio || 1;

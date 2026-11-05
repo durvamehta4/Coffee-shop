@@ -1,6 +1,6 @@
 // Scroll reveal, header state, progress line and active-section nav.
 (function () {
-  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduce = (matchMedia("(prefers-reduced-motion: reduce)").matches || document.documentElement.classList.contains("calm"));
   const header = document.querySelector(".site-header");
   const bar = document.createElement("div");
   bar.className = "scroll-progress"; header.appendChild(bar);

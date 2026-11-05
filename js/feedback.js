@@ -13,7 +13,7 @@
     return cands.find((el) => el && el.offsetParent !== null && el.getBoundingClientRect().width);
   }
   function fly(from) {
-    const t = target(); if (!t || !from || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const t = target(); if (!t || !from || (matchMedia("(prefers-reduced-motion: reduce)").matches || document.documentElement.classList.contains("calm"))) return;
     const r = t.getBoundingClientRect();
     const dot = document.createElement("span"); dot.className = "fly-dot"; document.body.appendChild(dot);
     const dx = r.left + r.width / 2 - from.x, dy = r.top + r.height / 2 - from.y;

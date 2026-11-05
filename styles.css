@@ -1796,3 +1796,4 @@ body.has-strip .menu-tabs { top: 108px; }
 .reel-name { min-height: 3rem; margin: 0; display: grid; }
 .reel-name strong { font-family: "Playfair Display", serif; font-size: 1.5rem; }
 .reel-name small { color: var(--muted); }
+.prefill-note { margin: 0; padding: 0.55rem 0.8rem; border-radius: 10px; background: color-mix(in srgb, var(--ok) 12%, transparent); color: var(--ok); font-size: 0.85rem; font-weight: 600; }

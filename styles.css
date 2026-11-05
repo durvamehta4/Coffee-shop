@@ -607,3 +607,43 @@ body:has(.order-bar.show) .site-footer { padding-bottom: 6rem; }
   .quiz-cta { justify-content: center; }
 }
 @media (max-width: 420px) { .quiz-answers { grid-template-columns: 1fr; } }
+
+/* ---------- Ember Club ---------- */
+.club { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
+.club-card {
+  position: relative; aspect-ratio: 1.6; border-radius: 22px; padding: 1.75rem;
+  display: flex; flex-direction: column; justify-content: space-between;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(200, 131, 74, 0.55), transparent 45%),
+    linear-gradient(135deg, #3a271d, #1f140f);
+  color: var(--cream); box-shadow: 0 30px 60px rgba(43, 29, 22, 0.35);
+  transform: rotate(-3deg); transition: transform 0.4s;
+}
+.club-card:hover { transform: rotate(0); }
+.club-card.preview { filter: saturate(0.9); }
+.club-card.celebrate { animation: celebrate 0.8s ease; }
+@keyframes celebrate { 30% { transform: rotate(2deg) scale(1.05); } 60% { transform: rotate(-4deg) scale(0.98); } }
+.club-card-head { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.9rem; opacity: 0.9; }
+.club-logo { font-family: "Playfair Display", serif; font-size: 1.4rem; font-weight: 700; color: var(--caramel); }
+.stamps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.6rem; }
+.stamp {
+  aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center;
+  border: 2px dashed rgba(247, 241, 232, 0.35); font-size: 0.85rem; color: rgba(247, 241, 232, 0.45);
+}
+.stamp.on { border: 2px solid var(--caramel); background: rgba(200, 131, 74, 0.25); font-size: 1.3rem; color: inherit; animation: stampIn 0.4s ease backwards; animation-delay: calc(var(--i) * 0.06s); }
+.stamp.free { border-style: solid; border-color: var(--caramel); color: var(--caramel); font-weight: 700; font-size: 0.7rem; letter-spacing: 0.05em; }
+.stamp.free.on { background: var(--caramel); color: #fff; }
+@keyframes stampIn { from { transform: scale(1.8) rotate(-20deg); opacity: 0; } }
+.club-form { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.25rem 0 0.5rem; }
+.club-form input {
+  flex: 1 1 160px; padding: 0.8rem 1rem; border-radius: 999px; font: inherit;
+  border: 1px solid rgba(74, 50, 38, 0.3); background: #fff;
+}
+.club-form input:focus { outline: 2px solid var(--caramel); border-color: transparent; }
+.club-nudge { margin: 0; font-size: 0.88rem; color: var(--muted); }
+.club-nudge[hidden] { display: none; }
+@media (max-width: 800px) {
+  .club { grid-template-columns: 1fr; gap: 2rem; }
+  .club-card { max-width: 420px; width: 100%; margin: 0 auto; padding: 1.25rem; }
+  .stamps { gap: 0.4rem; }
+}

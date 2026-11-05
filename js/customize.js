@@ -84,9 +84,9 @@
       group("sweet", "Sweetness", [{ v: "None" }, { v: "Light" }, { v: "Regular" }, { v: "Vanilla", d: 0.5 }]);
   }
 
-  function open(id) {
+  function open(id, preset = {}) {
     const item = MENU_INDEX[id];
-    Object.assign(state, { id, size: "Medium", temp: item.hot === false ? "Iced" : "Hot", milk: "Whole milk", shots: 0, sweet: "None" });
+    Object.assign(state, { id, size: "Medium", temp: item.hot === false ? "Iced" : "Hot", milk: "Whole milk", shots: 0, sweet: "None" }, preset);
     render();
     sheet.classList.add("open"); document.getElementById("builder-overlay").classList.add("open");
     document.body.classList.add("no-scroll");
@@ -98,9 +98,9 @@
   }
   window.openBuilder = open;
   // Thumbnail cup for menu cards (default recipe, no animation).
-  window.cupThumb = (id) => RECIPES[id]
-    ? cupSVG(id, { size: id === "espresso" ? "Small" : "Large", temp: MENU_INDEX[id].hot === false ? "Iced" : "Hot", shots: 0, milk: "Whole milk" }, "clip-" + id).replace(/<animate[^>]*\/>/g, "")
-    : null;
+  window.cupThumb = function (id) { return RECIPES[id]
+    ? cupSVG(id, { size: id === "espresso" ? "Small" : "Large", temp: MENU_INDEX[id].hot === false ? "Iced" : "Hot", shots: 0, milk: "Whole milk", ...arguments[1] }, "clip-" + id + (arguments[2] || "")).replace(/<animate[^>]*\/>/g, "")
+    : null; };
   document.dispatchEvent(new CustomEvent("builder:ready"));
 
   sheet.addEventListener("change", (e) => {

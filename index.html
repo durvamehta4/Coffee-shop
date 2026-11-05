@@ -389,6 +389,22 @@
       </div>
     </section>
 
+    <!-- Ask the barista -->
+    <section id="faq" class="section">
+      <div class="container faq">
+        <div>
+          <p class="eyebrow">Ask the barista</p>
+          <h2>Got a question? Ask away.</h2>
+          <form class="ask" id="ask" role="search">
+            <div class="ask-box"><span aria-hidden="true">💬</span><input type="text" placeholder="e.g. Do you have oat milk?" aria-label="Ask a question" /><button class="btn btn-small" type="submit">Ask</button></div>
+            <div class="ask-chips"></div>
+            <div class="ask-answer" aria-live="polite"><p class="muted">Answers come straight from today's menu and hours.</p></div>
+          </form>
+        </div>
+        <div class="faq-list" id="faq-list"></div>
+      </div>
+    </section>
+
     <!-- Catering -->
     <section id="contact" class="section section-alt">
       <div class="container catering">
@@ -557,5 +573,6 @@
   <script src="js/tabbar.js" defer></script>
   <script src="js/brew.js" defer></script>
   <script src="js/events.js" defer></script>
+  <script src="js/faq.js" defer></script>
 </body>
 </html>

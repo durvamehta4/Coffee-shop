@@ -1698,3 +1698,7 @@ body:has(.me-panel:not([hidden])) .toast { opacity: 0; pointer-events: none; }
 .impact-stats b { font-family: "Playfair Display", serif; font-size: 2.2rem; color: var(--ok); }
 .impact-stats span { font-size: 0.78rem; color: var(--muted); }
 @media (max-width: 800px) { .planet-grid { grid-template-columns: 1fr; gap: 2rem; } .commit { grid-template-columns: 1fr; } }
+.net-pill { position: fixed; z-index: 97; top: 110px; left: 50%; transform: translateX(-50%); max-width: calc(100% - 1.5rem); padding: 0.55rem 1rem; border-radius: 999px; font-size: 0.85rem; font-weight: 600; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); animation: fade 0.3s ease; text-align: center; }
+.net-pill[hidden] { display: none; }
+.net-pill.off { background: #3a3a3a; color: #fff; }
+.net-pill.on { background: #3d7a46; color: #fff; }

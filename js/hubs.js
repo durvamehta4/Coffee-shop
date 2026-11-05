@@ -2,6 +2,7 @@
 (function () {
   const HUBS = [
     { id: "shop", eyebrow: "The shop", title: "Take Ember & Bean home", tabs: [["beans", "🫘 Beans"], ["brew-guide", "⏱ Brew guide"], ["gifts", "🎁 Gifts"]] },
+    { id: "plan", eyebrow: "Plan your visit", title: "Come by, book in, or bring the crew", tabs: [["visit", "📍 Hours & map"], ["events", "🎉 Events"], ["faq", "❓ FAQ"], ["contact", "📦 Catering"]] },
     { id: "story", eyebrow: "Who we are", title: "The people, the planet, the pours", tabs: [["about", "📖 Our story"], ["team", "👋 The crew"], ["planet", "🌱 Planet"], ["gallery-sec", "📸 From the bar"]] },
   ];
   const owner = {};

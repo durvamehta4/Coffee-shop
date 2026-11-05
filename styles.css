@@ -1030,3 +1030,18 @@ body.has-strip .toast { top: 120px; }
 @media (max-width: 600px) { .toast-text small, .toast-up em { display: none; } .toast { gap: 0.5rem; font-size: 0.82rem; } }
 .gifts > *, .gift-form fieldset, .gift-row > * { min-width: 0; }
 .gift-row input { width: 100%; }
+
+/* ---------- Group sharing ---------- */
+.share-order { font-size: 0.88rem; color: var(--muted); }
+.share-order[hidden] { display: none; }
+.share-order u { color: var(--caramel); font-weight: 600; text-decoration-thickness: 1.5px; }
+.shared-banner {
+  position: fixed; z-index: 65; left: 50%; bottom: 1.5rem; transform: translateX(-50%);
+  width: min(640px, calc(100% - 1.5rem)); display: grid; grid-template-columns: auto 1fr auto auto; gap: 0.9rem; align-items: center;
+  padding: 0.9rem 1rem; background: var(--surface); color: var(--text); border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3); border: 2px solid var(--caramel); animation: fade 0.4s ease;
+}
+.sb-icon { font-size: 1.8rem; }
+.shared-banner div { display: grid; min-width: 0; }
+.shared-banner small { color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 600px) { .shared-banner { grid-template-columns: auto 1fr auto; } .shared-banner .btn { grid-column: 1 / -1; } .shared-banner #sb-x { grid-row: 1; grid-column: 3; } }

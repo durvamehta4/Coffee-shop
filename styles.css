@@ -1504,3 +1504,29 @@ p { text-wrap: pretty; }
 .invite .btn-ghost { border-color: var(--caramel); color: var(--caramel); }
 .cart-undo { display: flex; justify-content: space-between; align-items: center; padding: 0.7rem 0.9rem; margin-top: 0.4rem; border-radius: 12px; background: rgba(var(--line-rgb), 0.06); font-size: 0.9rem; animation: fade 0.25s ease; list-style: none; }
 .cart-undo .link-btn { color: var(--caramel); font-weight: 700; }
+
+/* ---------- Print menu ---------- */
+.print-link { color: var(--caramel); font-weight: 600; text-decoration: underline; margin-left: 0.4rem; }
+.print-menu { display: none; }
+@media print {
+  @page { margin: 14mm; }
+  body > *:not(.print-menu) { display: none !important; }
+  body::after { display: none; }
+  html, body { background: #fff !important; color: #1d130e; }
+  .print-menu { display: block; font-family: Inter, sans-serif; color: #1d130e; }
+  .print-menu header { text-align: center; border-bottom: 2px solid #c8834a; padding-bottom: 8px; margin-bottom: 14px; }
+  .print-menu h1 { font-family: "Playfair Display", serif; font-size: 34pt; margin: 0; }
+  .print-menu h1 span { color: #c8834a; }
+  .print-menu header p { margin: 4px 0 0; font-size: 9pt; color: #6e5a4e; }
+  .pm-cols { columns: 2; column-gap: 28px; }
+  .pm-cat { break-inside: avoid; margin-bottom: 10px; }
+  .pm-cat h2 { font-family: "Playfair Display", serif; font-size: 15pt; margin: 0 0 6px; color: #c8834a; }
+  .pm-item { display: flex; justify-content: space-between; gap: 10px; padding: 2.5px 0; border-bottom: 1px dotted #cbb9aa; break-inside: avoid; font-size: 10pt; }
+  .pm-item small { display: block; font-size: 8pt; color: #6e5a4e; }
+  .pm-item em { font-style: normal; }
+  .pm-item span { font-weight: 700; white-space: nowrap; }
+  .print-menu footer { display: flex; gap: 16px; align-items: center; margin-top: 12px; padding-top: 10px; border-top: 2px solid #c8834a; font-size: 9pt; break-inside: avoid; }
+  .print-menu footer p { margin: 2px 0; }
+  .pm-qr { width: 90px; flex-shrink: 0; }
+  .pm-qr svg { width: 100%; height: auto; display: block; }
+}

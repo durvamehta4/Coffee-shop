@@ -1844,3 +1844,12 @@ body.has-strip .menu-tabs { top: 108px; }
 .stock-chip.out { background: rgba(var(--line-rgb), 0.1); color: var(--muted); }
 .menu-card.sold-out .menu-thumb { filter: grayscale(0.7) opacity(0.6); }
 .menu-card.sold-out .add-btn { border-style: dashed; }
+.admin { position: fixed; z-index: 99; top: 120px; left: 1rem; width: min(380px, calc(100% - 2rem)); max-height: calc(100vh - 140px); overflow-y: auto; background: var(--bg); color: var(--text); border-radius: 16px; padding: 1rem 1.1rem; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35); border: 2px solid var(--caramel); font-size: 0.86rem; }
+.admin-head { display: flex; gap: 0.6rem; align-items: center; margin-bottom: 0.6rem; }
+.admin-head span { margin-left: auto; font-weight: 700; color: var(--caramel); }
+.admin ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.admin li { display: grid; grid-template-columns: 18px 1fr; gap: 0.4rem; }
+.admin li.ok b { color: var(--ok); }
+.admin small { display: block; color: var(--muted); }
+.admin p { margin: 0.75rem 0 0; color: var(--muted); font-size: 0.78rem; }
+.admin code { background: var(--surface); padding: 0 0.25rem; border-radius: 4px; }

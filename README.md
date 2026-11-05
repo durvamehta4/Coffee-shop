@@ -46,6 +46,19 @@ Add `?debug=funnel` to the URL to see a live conversion funnel.
 | `assets/` | Favicon and social share image |
 | `tests/` | Static server and end-to-end checks |
 
+## Launch checklist
+
+Open the site with `?admin` (e.g. `http://localhost:8080/?admin`) to see what's still placeholder: order endpoint, address and phone, reviews, map coordinates, review link and social links. Everything the shop edits lives in a few places:
+
+| What | Where |
+| --- | --- |
+| Menu, prices, badges, allergens | `js/data.js` |
+| Hours and holidays | `js/core.js` (`HOURS`, `holidayFor`) |
+| Order delivery | `js/config.js` |
+| Sell-out times | `js/stock.js` (`RULES`) |
+| Events | `js/events.js` |
+| Reviews | `js/reviews.js` |
+
 ## Going live: receiving orders
 
 Orders work end-to-end in the browser, but they reach the shop only once you set an endpoint in `js/config.js`:

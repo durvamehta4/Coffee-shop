@@ -1279,3 +1279,35 @@ body.no-scroll .toast { opacity: 0; pointer-events: none; }
 .me-list li { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; padding: 0.65rem 0.8rem; background: var(--surface); border-radius: 12px; }
 .me-list li > span { display: grid; min-width: 0; }
 .me-list small { color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ---------- Mobile tab bar ---------- */
+.logo { white-space: nowrap; }
+.tabbar { display: none; }
+@media (max-width: 800px) {
+  .nav .me-btn, .nav .pal-btn, .cart-icon-mobile { display: none !important; }
+  .nav .theme-toggle { margin-left: auto; }
+  .tabbar {
+    position: fixed; z-index: 45; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(5, 1fr);
+    padding: 0.35rem 0.4rem calc(0.35rem + env(safe-area-inset-bottom)); background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid rgba(var(--line-rgb), 0.12);
+  }
+  .tb {
+    display: grid; justify-items: center; gap: 0.1rem; padding: 0.3rem 0; border: 0; background: none; font: inherit;
+    font-size: 0.68rem; font-weight: 600; color: var(--muted); text-decoration: none; cursor: pointer;
+  }
+  .tb span, .tb-ico { font-size: 1.25rem; line-height: 1.2; position: relative; }
+  .tb-order { margin: -0.9rem 0.15rem 0; padding: 0.55rem 0 0.4rem; border-radius: 18px; background: var(--espresso); color: var(--cream); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); }
+  .tb-order.has { background: var(--caramel); color: #fff; }
+  .tb-badge { position: absolute; top: -4px; right: -10px; min-width: 18px; height: 18px; border-radius: 9px; background: #fff; color: var(--espresso); font-size: 0.65rem; display: grid; place-items: center; padding: 0 4px; }
+  .tb-badge[hidden] { display: none; }
+  .order-bar { display: none !important; }
+  .tracker { bottom: 5.25rem !important; }
+  .toast { top: auto; bottom: 5.5rem; }
+  body.has-strip .toast { top: auto; }
+  .site-footer .footer-bottom { padding-bottom: 6rem; }
+  .shared-banner, .voice-sheet { bottom: 5.25rem; }
+}
+@media (max-width: 600px) {
+  .menu-tabs { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; scrollbar-width: none; margin-inline: -1rem; padding-inline: 1rem; }
+  .tab { white-space: nowrap; flex-shrink: 0; padding: 0.5rem 1.1rem; }
+}

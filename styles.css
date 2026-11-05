@@ -1758,3 +1758,7 @@ body.has-strip .hub-tabs { top: 112px; }
 .hub-panel { animation: fade 0.35s ease; }
 .hub-panel > .container > .eyebrow.center, .hub-panel > .container > .section-title { display: none; }
 @media (max-width: 600px) { .hub-tabs { display: flex; } .hub-tabs button { padding: 0.5rem 0.85rem; font-size: 0.85rem; } }
+.trust-row { list-style: none; padding: 0; margin: 1.1rem 0 0; display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; font-size: 0.88rem; color: rgba(247, 241, 232, 0.85); }
+.trust-row a { color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(247, 241, 232, 0.5); }
+.trust-row li:last-child { color: #f0c27b; }
+.trust-row + .ambience { margin-top: 1.25rem; }

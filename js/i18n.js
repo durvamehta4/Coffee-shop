@@ -34,7 +34,7 @@
     "Meet the people behind your cup": "Conoce a quienes preparan tu café", "The winter menu is here.": "Llegó el menú de invierno.", "Café-quality coffee in your kitchen": "Café de cafetería en tu cocina",
     "Wrapped, ready, and picked up with your latte": "Envuelto, listo y para recoger con tu latte", "Add": "Añadir", "Add bag": "Añadir bolsa", "Add box": "Añadir caja",
     "Add to order ·": "Añadir al pedido ·", "Make it a combo": "Hazlo combo", ": add a butter croissant for": ": añade un croissant por",
-    "Place order": "Hacer pedido", "Popular right now": "Lo más pedido",
+    "Place order": "Hacer pedido", "✓ No card needed": "✓ Sin tarjeta", "✓ Ready in ~15 min": "✓ Listo en ~15 min", "★ 4.9 from regulars": "★ 4.9 de nuestros clientes", "Popular right now": "Lo más pedido",
   };
   // Menu descriptions by id
   const DESC = {

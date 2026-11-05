@@ -28,6 +28,8 @@
     const { hours } = hoursFor(now);
     const t = now.getHours() + now.getMinutes() / 60;
     const txt = el.querySelector(".qo-status-text");
+    const te = document.getElementById("trust-eta");
+    if (te) te.textContent = isOpenAt(now) ? "✓ Ready in ~15 min" : "✓ Pre-order for " + dayInline(nextOpening(now), now);
     if (isOpenAt(now)) {
       const c = hours[1];
       const left = Math.round((c - t) * 60);

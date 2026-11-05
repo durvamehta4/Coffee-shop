@@ -1498,3 +1498,7 @@ p { text-wrap: pretty; }
 .bean { transition: opacity 0.3s, transform 0.3s, filter 0.3s; }
 .bean.dim { opacity: 0.35; filter: grayscale(0.6); transform: scale(0.97); }
 @media (max-width: 700px) { .flavor { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 1rem; } .wheel { width: 240px; } }
+.invite { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.25rem; padding: 0.9rem 1rem; border-radius: 16px; background: var(--surface); box-shadow: var(--shadow); }
+.invite div { display: grid; }
+.invite small { color: var(--muted); }
+.invite .btn-ghost { border-color: var(--caramel); color: var(--caramel); }

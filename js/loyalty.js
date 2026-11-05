@@ -6,7 +6,7 @@
   const drinksIn = (lines) => lines.filter((l) => !MENU_INDEX[l.id].food);
   const root = document.getElementById("club");
 
-  window.Club = { get, set };
+  window.Club = { get, set, render: () => render() };
 
   function stamps(n, preview) {
     return Array.from({ length: GOAL }, (_, i) =>
@@ -52,6 +52,7 @@
           <p class="eyebrow">Welcome back, ${m.name}</p>
           <h2>${left ? `${left} more stamp${left > 1 ? "s" : ""} to a free drink.` : "Your next drink is free! 🎉"}</h2>
           <p class="muted">${left ? "Every drink you order ahead earns a stamp automatically." : "It'll come off your next order automatically, up to $6."}</p>
+          ${m.refBonus ? `<p class="small">🎁 Includes a bonus stamp from ${m.refBonus}!</p>` : ""}
           <a href="#menu" class="btn">${left ? "Earn stamps now" : "Claim your free drink"}</a>
         </div>`;
     }

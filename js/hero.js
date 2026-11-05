@@ -1,24 +1,8 @@
 // Hero quick-order card: live open status + ready-time estimate + one-tap popular drinks.
 (function () {
   // Dayparts drive the hero copy, featured items and photo grade.
-  const DAYPARTS = [
-    { until: 11, key: "morning", eyebrow: "Good morning · roasted in house", h1: "Good coffee,<br />slow mornings.",
-      lead: "Freshly roasted beans, handmade pastries, and a warm corner to settle into. Order ahead and it'll be waiting for you.",
-      title: "Morning favorites", picks: ["latte", "flatwhite", "croissant"] },
-    { until: 17, key: "afternoon", eyebrow: "Afternoon · iced & energizing", h1: "Beat the<br />3 pm slump.",
-      lead: "Smooth cold brew, iced lattes and matcha to carry you through the afternoon. Ready when you are.",
-      title: "Afternoon pick-me-ups", picks: ["coldbrew", "latte", "matcha"], iced: true },
-    { until: 24, key: "evening", eyebrow: "Evening · cozy & calm", h1: "Wind down<br />gently.",
-      lead: "Spiced chai, rich hot chocolate and decaf pour-overs for slow evenings and good conversations.",
-      title: "Evening comforts", picks: ["chai", "cocoa", "tea"] },
-  ];
   const ICON = { latte: "🥛", flatwhite: "☕", coldbrew: "🧊", croissant: "🥐", matcha: "🍵", chai: "🫖", cocoa: "🍫", tea: "🌿" };
-  const part = DAYPARTS.find((d) => new Date().getHours() < d.until);
-  document.body.dataset.daypart = part.key;
-  const hero = document.querySelector(".hero-content");
-  hero.querySelector(".eyebrow").textContent = part.eyebrow;
-  hero.querySelector("h1").innerHTML = part.h1;
-  hero.querySelector(".lead").textContent = part.lead;
+  const part = window.DAYPART; // set by the inline script right after the hero markup (no late repaint)
   document.querySelector(".qo-title").textContent = part.title;
   const hh = window.Deals && Deals.hhNow && Deals.hhNow();
   const list = document.getElementById("qo-list");

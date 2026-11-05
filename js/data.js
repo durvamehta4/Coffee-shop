@@ -33,6 +33,9 @@ window.MENU = [
     { id: "bean-decaf", name: "Midnight Decaf", desc: "Swiss Water Process Peru · cocoa, brown sugar, plum.", price: 18, tags: ["vegan", "decaf"], food: true, retail: true, nocaf: true, roast: 3, color: "#5b6b8c", origin: "Cajamarca, Peru" },
   ]},
   { cat: "gifts", items: [
+    { id: "box-ritual", name: "The Morning Ritual box", desc: "House Blend bag, stoneware mug, $10 gift card.", price: 45, compare: 54, tags: [], food: true, retail: true, hidden: true, color: "#c8834a", contents: ["Ember House Blend, 340g", "Hand-thrown stoneware mug", "$10 gift card", "Handwritten note"] },
+    { id: "box-explorer", name: "The Origin Explorer box", desc: "Three 120g sampler bags and a brew guide card.", price: 52, compare: 60, tags: [], food: true, retail: true, hidden: true, color: "#3f6b4f", contents: ["Ethiopia, Brazil & Peru samplers", "Tasting notes card", "Pour-over brew guide", "Handwritten note"] },
+    { id: "box-cozy", name: "Cozy Nights box", desc: "Midnight Decaf, hot cocoa mix and a soy candle.", price: 34, compare: 41, tags: [], food: true, retail: true, hidden: true, color: "#2c3550", contents: ["Midnight Decaf, 340g", "Dark hot cocoa mix", "Roasted-coffee soy candle", "Handwritten note"] },
     { id: "latteart", name: "Latte Art 101 workshop", desc: "90-minute hands-on class, drinks included.", price: 25, tags: [], food: true, retail: true, hidden: true },
     { id: "forward", name: "Pay-it-forward coffee", desc: "A coffee for a neighbor, pinned to our community board.", price: 3, tags: [], food: true, retail: true, hidden: true },
     { id: "giftcard", name: "Gift card", desc: "A handwritten gift card, ready with your pickup.", price: 25, tags: [], food: true, retail: true, hidden: true },

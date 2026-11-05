@@ -722,3 +722,39 @@ body:has(.order-bar.show) .site-footer { padding-bottom: 6rem; }
   .filter-chips { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; width: 100%; padding-bottom: 0.25rem; scrollbar-width: none; }
   .fchip { white-space: nowrap; }
 }
+
+/* ---------- Reviews marquee ---------- */
+.reviews-section { overflow: hidden; }
+.reviews-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem; }
+.reviews-head h2 { margin: 0; }
+.rating-summary { display: flex; align-items: center; gap: 0.9rem; }
+.rating-big { font-family: "Playfair Display", serif; font-size: 3.5rem; font-weight: 700; line-height: 1; }
+.stars { color: #e0a43a; letter-spacing: 0.1em; }
+.stars.big { font-size: 1.3rem; }
+.review-rows { display: grid; gap: 1.25rem; }
+.marquee {
+  padding-block: 0.75rem 1.5rem; margin-block: -0.75rem -1.5rem;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track { display: flex; gap: 1.25rem; width: max-content; animation: marquee 60s linear infinite; }
+.marquee.reverse .marquee-track { animation-direction: reverse; animation-duration: 70s; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(calc(-50% - 0.625rem)); } }
+.review {
+  margin: 0; width: 320px; flex-shrink: 0; padding: 1.4rem;
+  background: var(--surface); border-radius: 18px; box-shadow: var(--shadow);
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.review blockquote { margin: 0; flex: 1; line-height: 1.55; }
+.review figcaption { display: flex; align-items: center; gap: 0.6rem; font-weight: 600; font-size: 0.9rem; }
+.avatar {
+  width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--caramel); color: #fff; font-size: 0.85rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; flex-wrap: wrap; width: auto; justify-content: center; }
+  .marquee-track [aria-hidden="true"] { display: none; }
+}
+@media (max-width: 600px) { .review { width: 270px; } }

@@ -29,3 +29,8 @@ Then visit http://localhost:8000.
 | `index.html` | Page structure and content      |
 | `styles.css` | Layout, colors and responsive styles |
 | `script.js`  | Nav toggle, menu tabs, open status, form |
+
+## Placeholder content
+
+The shop name, address, phone, prices and the reviews in `js/reviews.js` are sample content.
+Replace the reviews with real customer quotes (with permission) before going live.

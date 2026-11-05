@@ -1649,3 +1649,7 @@ html.ulinks a:not(.btn) { text-decoration: underline !important; }
 .sub-acts .link-btn { padding: 0; color: var(--text); font-weight: 600; }
 .sub-acts .danger { color: #a54a3a; margin-left: auto; }
 body:has(.me-panel:not([hidden])) .toast { opacity: 0; pointer-events: none; }
+.num-flash { animation: numflash 0.6s ease; font-variant-numeric: tabular-nums; }
+@keyframes numflash { 30% { color: var(--caramel); } }
+.ob-total.num-flash, .tb-label.num-flash { animation-name: numflashLight; }
+@keyframes numflashLight { 30% { color: #ffd9b0; } }

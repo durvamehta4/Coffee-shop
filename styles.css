@@ -1839,3 +1839,8 @@ body.has-strip .menu-tabs { top: 108px; }
   position: sticky; bottom: -1.25rem; z-index: 2; margin: 0 -1.5rem -1.25rem; padding: 0.8rem 1.5rem 1.25rem;
   background: var(--bg); box-shadow: 0 -14px 24px -14px rgba(43, 29, 22, 0.35);
 }
+.stock-chip { justify-self: start; align-self: flex-start; font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 999px; }
+.stock-chip.soon { background: rgba(200, 100, 40, 0.14); color: var(--caramel); }
+.stock-chip.out { background: rgba(var(--line-rgb), 0.1); color: var(--muted); }
+.menu-card.sold-out .menu-thumb { filter: grayscale(0.7) opacity(0.6); }
+.menu-card.sold-out .add-btn { border-style: dashed; }

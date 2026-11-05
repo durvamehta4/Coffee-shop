@@ -32,14 +32,23 @@
   <main>
     <!-- Hero -->
     <section id="home" class="hero">
-      <div class="container hero-content">
-        <p class="eyebrow">Small-batch · Roasted in house</p>
-        <h1>Good coffee,<br />slow mornings.</h1>
-        <p class="lead">Freshly roasted beans, handmade pastries, and a warm corner to settle into. Come in and stay a while.</p>
-        <div class="hero-actions">
-          <a href="#menu" class="btn">Order ahead</a>
-          <a href="#visit" class="btn btn-outline">Find us</a>
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="eyebrow">Small-batch · Roasted in house</p>
+          <h1>Good coffee,<br />slow mornings.</h1>
+          <p class="lead">Freshly roasted beans, handmade pastries, and a warm corner to settle into. Order ahead and it'll be waiting for you.</p>
+          <div class="hero-actions">
+            <a href="#menu" class="btn">Order ahead</a>
+            <a href="#visit" class="btn btn-outline">Find us</a>
+          </div>
         </div>
+
+        <aside class="quick-order" aria-label="Quick order">
+          <div class="qo-status" id="qo-status"><span class="dot"></span><span class="qo-status-text">Checking hours…</span></div>
+          <h2 class="qo-title">Popular right now</h2>
+          <ul class="qo-list" id="qo-list"></ul>
+          <a href="#menu" class="qo-more">See the full menu →</a>
+        </aside>
       </div>
     </section>
 
@@ -183,5 +192,6 @@
   <script src="js/menu.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/customize.js"></script>
+  <script src="js/hero.js"></script>
 </body>
 </html>

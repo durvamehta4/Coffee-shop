@@ -1104,3 +1104,4 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius
 .cater-total small { grid-column: 1 / -1; text-align: right; color: var(--muted); }
 .cater .field input { width: 100%; }
 @media (max-width: 800px) { .catering { grid-template-columns: 1fr; gap: 2rem; } .cater { padding: 1.25rem; } }
+.wx { display: inline-flex; margin: 0.5rem 0 0 0.4rem; padding: 0.35rem 0.75rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; background: rgba(255, 250, 243, 0.14); color: var(--cream); }

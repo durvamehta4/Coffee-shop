@@ -19,7 +19,7 @@
   // --- Experiment 1: hero CTA copy ---
   const heroCopy = { control: "Order ahead", skip: "Skip the line →", fast: "Order in 30 seconds" };
   const hv = Experiments.variant("hero_cta", Object.keys(heroCopy));
-  const cta = document.querySelector(".hero-actions .btn");
+  const cta = document.querySelector('.hero-actions a[href="#menu"]');
   if (cta && !(window.getLang && getLang() === "es")) cta.textContent = heroCopy[hv];
 
   // --- Experiment 2: checkout button copy ---

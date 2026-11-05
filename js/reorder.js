@@ -14,6 +14,19 @@
     openCart();
   }
   window.reorderLast = reorder;
+  // Express: rebuild + jump straight to the (pre-filled) checkout step.
+  window.expressReorder = function () {
+    reorder();
+    setTimeout(() => document.getElementById("to-checkout").click(), 60);
+    window.track && track("express_reorder");
+  };
+  (function heroButton() {
+    const o = last(); if (!o) return;
+    const actions = document.querySelector(".hero-actions"); if (!actions) return;
+    actions.insertAdjacentHTML("afterbegin", `<button class="btn btn-usual" data-call="expressReorder">↻ Your usual · ${fmt(subtotal(o))}</button>`);
+    const primary = actions.querySelector("a.btn:not(.btn-outline)");
+    if (primary) primary.classList.add("btn-outline");
+  })();
 
   function render() {
     const o = last();

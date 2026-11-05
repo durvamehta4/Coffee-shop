@@ -1797,3 +1797,5 @@ body.has-strip .menu-tabs { top: 108px; }
 .reel-name strong { font-family: "Playfair Display", serif; font-size: 1.5rem; }
 .reel-name small { color: var(--muted); }
 .prefill-note { margin: 0; padding: 0.55rem 0.8rem; border-radius: 10px; background: color-mix(in srgb, var(--ok) 12%, transparent); color: var(--ok); font-size: 0.85rem; font-weight: 600; }
+.btn-usual { box-shadow: 0 10px 26px rgba(224, 163, 108, 0.35); }
+.hero-actions .btn-outline { color: #fff; }

@@ -80,33 +80,6 @@ function updateOpenStatus() {
 }
 updateOpenStatus();
 
-// ---------- Contact form ----------
-const form = document.getElementById("contact-form");
-const formStatus = document.getElementById("form-status");
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  let valid = true;
-
-  form.querySelectorAll("input, textarea").forEach((field) => {
-    const ok = field.checkValidity() && field.value.trim() !== "";
-    field.parentElement.classList.toggle("invalid", !ok);
-    if (!ok) valid = false;
-  });
-
-  if (!valid) {
-    formStatus.textContent = "Please fill in all fields with a valid email.";
-    formStatus.className = "form-status error";
-    return;
-  }
-
-  // No backend yet — just confirm to the visitor.
-  const name = form.name.value.trim();
-  formStatus.textContent = `Thanks, ${name}! We'll get back to you soon.`;
-  formStatus.className = "form-status success";
-  form.reset();
-});
-
 // ---------- Footer year ----------
 document.getElementById("year").textContent = new Date().getFullYear();
 

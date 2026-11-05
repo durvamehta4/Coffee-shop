@@ -323,26 +323,36 @@
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- Catering -->
     <section id="contact" class="section section-alt">
-      <div class="container contact">
-        <h2 class="section-title">Say hello</h2>
-        <p class="section-sub">Questions, catering, or just want to chat about coffee? Drop us a note.</p>
-        <form class="contact-form" id="contact-form" novalidate>
-          <div class="field">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" required />
+      <div class="container catering">
+        <div class="cater-intro">
+          <p class="eyebrow">Catering &amp; events</p>
+          <h2>Coffee for the whole crew.</h2>
+          <p class="muted">Tell us how many people and what kind of event, and we'll size it for you. Everything comes in insulated boxes with cups, lids and stirrers.</p>
+          <ul class="cater-perks"><li>✓ Free delivery within 3 miles over $100</li><li>✓ Oat &amp; almond milk on request</li><li>✓ 24 hours' notice is all we need</li></ul>
+          <p class="small muted">Just want to say hello? <a href="mailto:hello@emberandbean.example">hello@emberandbean.example</a></p>
+        </div>
+        <form class="cater" id="cater" novalidate>
+          <div class="cater-row">
+            <label for="ppl" class="cater-label">How many people? <output id="ppl-out">20</output></label>
+            <input type="range" id="ppl" min="5" max="150" step="5" value="20" />
           </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required />
+          <fieldset class="cater-row"><legend class="cater-label">What's the occasion?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="kind" value="meeting" checked /><span>☕ Morning meeting</span></label>
+              <label class="chip"><input type="radio" name="kind" value="allday" /><span>💻 All-day workshop</span></label>
+              <label class="chip"><input type="radio" name="kind" value="party" /><span>🎉 Celebration</span></label>
+            </div>
+          </fieldset>
+          <ul class="cater-lines" id="cater-lines"></ul>
+          <div class="cater-total"><span>Estimated total</span><strong id="cater-total"></strong><small id="cater-pp"></small></div>
+          <div class="gift-row">
+            <div class="field"><label for="c-date">Date</label><input id="c-date" type="date" required /></div>
+            <div class="field"><label for="c-email">Your email</label><input id="c-email" type="email" placeholder="you@company.com" required /></div>
           </div>
-          <div class="field field-full">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-          <button type="submit" class="btn">Send message</button>
-          <p class="form-status" id="form-status" role="status"></p>
+          <button class="btn btn-block" type="submit">Request this quote →</button>
+          <p class="form-status" id="cater-status" role="status"></p>
         </form>
       </div>
     </section>
@@ -456,5 +466,6 @@
   <script src="js/share.js"></script>
   <script src="js/winter.js"></script>
   <script src="js/a11y.js"></script>
+  <script src="js/catering.js"></script>
 </body>
 </html>

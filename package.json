@@ -1,0 +1,12 @@
+{
+  "name": "ember-and-bean",
+  "private": true,
+  "description": "Ember & Bean coffee shop website (static, no build step).",
+  "scripts": {
+    "start": "node tests/serve.mjs",
+    "test": "node tests/e2e.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.47.0"
+  }
+}

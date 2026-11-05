@@ -1,36 +1,51 @@
 # Ember & Bean Coffee
 
-A simple, responsive static website for a coffee shop.
+A responsive, conversion-focused website for a neighborhood coffee shop. Plain HTML, CSS and vanilla JavaScript: no framework and no build step.
 
-## Features
+See [`CHANGELOG.md`](CHANGELOG.md) for every feature, shipped one bold iteration at a time.
 
-- Sticky header with a mobile hamburger menu
-- Hero banner with calls to action
-- About section with highlights
-- Tabbed menu (Coffee, Tea & More, Food) with prices
-- Location and hours, with a live "open now / closed" indicator
-- Contact form with client-side validation
-- No build step and no dependencies
+## Highlights
 
-## Running locally
+- **Order ahead for pickup** with a drink builder (live price, cup illustration, caffeine and calories), cart, pickup slots and pay-at-pickup checkout
+- **Smart selling:** pastry pairing, happy hour, loyalty stamps, reorder-your-usual, gift cards, beans and subscriptions, catering quotes
+- **Delight:** quiz, voice ordering, ⌘K palette, café ambience, live order tracker, confetti and pickup QR code
+- **Always correct:** a holiday-aware hours engine, a weather-aware hero, and copy that changes with the time of day
+- **Solid foundations:** dark theme, accessibility (focus trap, skip link, reduced motion), PWA/offline, structured data, GA4 `dataLayer` events
 
-Open `index.html` in a browser, or serve the folder:
+## Run it
 
 ```bash
-python3 -m http.server 8000
+npm start          # http://localhost:8080 (zero-dependency static server)
 ```
 
-Then visit http://localhost:8000.
+Or open `index.html` directly. A few features (service worker, share links) need `http://`.
 
-## Files
+## Test it
 
-| File         | Purpose                         |
-| ------------ | ------------------------------- |
-| `index.html` | Page structure and content      |
-| `styles.css` | Layout, colors and responsive styles |
-| `script.js`  | Nav toggle, menu tabs, open status, form |
+```bash
+npm install
+npx playwright install chromium
+npm test
+```
+
+The end-to-end suite (`tests/e2e.mjs`) covers page errors and horizontal overflow at phone and desktop widths, the full order flow, discount maths, the voice parser, holiday hours and shared-order links. CI runs it on every push (`.github/workflows/ci.yml`).
+
+Add `?debug=funnel` to the URL to see a live conversion funnel.
+
+## Structure
+
+| Path | Purpose |
+| --- | --- |
+| `index.html` | All page sections and markup |
+| `styles.css` | Design tokens (light and dark), layout and components |
+| `js/data.js` | Menu data: the single source for menu, cart, filters, quiz and more |
+| `js/core.js` | Hours engine (holidays), open status, shared helpers |
+| `js/cart.js` | Cart state, drawer, pickup slots and checkout |
+| `js/*.js` | One file per feature (builder, quiz, loyalty, voice, palette and more) |
+| `sw.js`, `manifest.webmanifest` | Offline support and installability |
+| `assets/` | Favicon and social share image |
+| `tests/` | Static server and end-to-end checks |
 
 ## Placeholder content
 
-The shop name, address, phone, prices and the reviews in `js/reviews.js` are sample content.
-Replace the reviews with real customer quotes (with permission) before going live.
+The shop name, address, phone, prices, events and the reviews in `js/reviews.js` are sample content. Replace the reviews with real customer quotes (with permission) before going live.

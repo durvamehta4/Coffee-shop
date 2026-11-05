@@ -947,3 +947,20 @@ body:has(.hero) .site-header { position: fixed; left: 0; right: 0; }
   .gifts { grid-template-columns: 1fr; gap: 1rem; }
   .gift-stage { order: -1; padding: 0; }
 }
+
+/* ---------- Ambience toggle ---------- */
+.ambience {
+  margin-top: 1.75rem; display: inline-flex; align-items: center; gap: 0.6rem;
+  background: rgba(255, 250, 243, 0.08); border: 1px solid rgba(255, 250, 243, 0.25);
+  color: var(--cream); font: inherit; font-size: 0.9rem; padding: 0.5rem 1rem 0.5rem 0.75rem;
+  border-radius: 999px; cursor: pointer; backdrop-filter: blur(6px); transition: background 0.2s;
+}
+.ambience:hover { background: rgba(255, 250, 243, 0.16); }
+.ambience[hidden] { display: none; }
+.eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 14px; }
+.eq i { width: 3px; height: 4px; background: var(--caramel); border-radius: 2px; }
+.ambience[aria-pressed="true"] .eq i { animation: eq 0.9s ease-in-out infinite; }
+.ambience[aria-pressed="true"] .eq i:nth-child(2) { animation-delay: 0.2s; }
+.ambience[aria-pressed="true"] .eq i:nth-child(3) { animation-delay: 0.45s; }
+.ambience[aria-pressed="true"] .eq i:nth-child(4) { animation-delay: 0.1s; }
+@keyframes eq { 50% { height: 14px; } }

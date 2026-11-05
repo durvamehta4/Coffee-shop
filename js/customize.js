@@ -27,12 +27,12 @@
   const sheet = document.getElementById("builder");
   const state = {};
 
-  function cupSVG(id) {
+  function cupSVG(id, st = state, uid = "cupclip") {
     const layers = (RECIPES[id] || [["brew", 7]]).map(([l, n]) => [l, n]);
-    if (state.shots > 0) layers.splice(layers.findIndex(([l]) => l === "espresso") + 1, 0, ["espresso", state.shots * 1.5]);
-    if (state.milk === "Oat" || state.milk === "Almond") layers.forEach((x) => x[0] === "milk" && (x[0] = "oat"));
-    const iced = state.temp === "Iced";
-    const scale = SIZES.find((s) => s.v === state.size).scale;
+    if (st.shots > 0) layers.splice(layers.findIndex(([l]) => l === "espresso") + 1, 0, ["espresso", st.shots * 1.5]);
+    if (st.milk === "Oat" || st.milk === "Almond") layers.forEach((x) => x[0] === "milk" && (x[0] = "oat"));
+    const iced = st.temp === "Iced";
+    const scale = SIZES.find((s) => s.v === st.size).scale;
     const H = 150 * scale, W = 110 * scale, top = 180 - H, inset = 14 * scale;
     const total = layers.reduce((s, [, n]) => s + n, 0);
     let y = 180;
@@ -47,8 +47,8 @@
     const clip = `M${L} ${top} L${R} ${top} L${R - inset} 180 L${L + inset} 180 Z`;
     return `<svg viewBox="0 0 200 200" role="img" aria-label="Preview of your ${MENU_INDEX[id].name}">
       ${steam}
-      <defs><clipPath id="cupclip"><path d="${clip}"/></clipPath></defs>
-      <g clip-path="url(#cupclip)">${rects}${ice}</g>
+      <defs><clipPath id="${uid}"><path d="${clip}"/></clipPath></defs>
+      <g clip-path="url(#${uid})">${rects}${ice}</g>
       <path d="${clip}" fill="none" stroke="#4a3226" stroke-width="3" stroke-linejoin="round"/>
       ${!iced ? `<path d="M${R - 2} ${top + 20} q 26 6 ${-inset / 2} ${H / 2.4}" fill="none" stroke="#4a3226" stroke-width="3"/>` : `<rect x="${100 + 8}" y="${top - 30}" width="6" height="${H}" fill="#c8834a" transform="rotate(12 110 ${top})"/>`}
       <ellipse cx="100" cy="188" rx="${W / 2}" ry="5" fill="rgba(43,29,22,.12)"/>
@@ -97,6 +97,11 @@
     document.body.classList.remove("no-scroll");
   }
   window.openBuilder = open;
+  // Thumbnail cup for menu cards (default recipe, no animation).
+  window.cupThumb = (id) => RECIPES[id]
+    ? cupSVG(id, { size: id === "espresso" ? "Small" : "Large", temp: MENU_INDEX[id].hot === false ? "Iced" : "Hot", shots: 0, milk: "Whole milk" }, "clip-" + id).replace(/<animate[^>]*\/>/g, "")
+    : null;
+  document.dispatchEvent(new CustomEvent("builder:ready"));
 
   sheet.addEventListener("change", (e) => {
     if (e.target.name) { state[e.target.name] = e.target.value; render(); }

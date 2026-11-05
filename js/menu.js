@@ -1,23 +1,24 @@
 // Renders menu panels from window.MENU and wires the tabs.
 (function () {
+  const FOOD_ICON = { croissant: "🥐", muffin: "🧁", avotoast: "🥑", sandwich: "🥪" };
+  const thumb = (i) => (window.cupThumb && cupThumb(i.id)) || `<span class="food-emoji">${FOOD_ICON[i.id] || "🍽"}</span>`;
   window.renderMenu = function () {
     MENU.forEach(({ cat, items }) => {
       const panel = document.getElementById(cat);
       if (!panel) return;
       panel.innerHTML = items.map((i) => `
-        <div class="menu-item" data-id="${i.id}">
-          <div class="menu-item-text">
-            <h3>${i.name}</h3>
+        <article class="menu-card" data-id="${i.id}">
+          <div class="menu-thumb ${i.food ? "food" : ""}" aria-hidden="true">${thumb(i)}</div>
+          <div class="menu-card-body">
+            <div class="menu-card-top"><h3>${i.name}</h3><span class="price">${fmt(i.price)}</span></div>
             <p>${i.desc}</p>
-          </div>
-          <div class="menu-item-side">
-            <span class="price">${fmt(i.price)}</span>
             <button class="add-btn" data-add="${i.id}" aria-label="Add ${i.name} to order">+ Add</button>
           </div>
-        </div>`).join("");
+        </article>`).join("");
     });
     document.dispatchEvent(new CustomEvent("menu:rendered"));
   };
+  document.addEventListener("builder:ready", () => renderMenu());
   renderMenu();
 
   const tabs = document.querySelectorAll(".tab");

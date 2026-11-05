@@ -489,3 +489,25 @@ a { color: var(--caramel); }
   .builder-cup svg { width: 150px; }
   .builder-main { padding: 1.25rem; overflow: visible; }
 }
+
+/* ---------- Pairing upsell ---------- */
+.pairing {
+  background: linear-gradient(135deg, #fbe9d5, #f6dcc0);
+  border-radius: 14px; padding: 0.9rem; border: 1px dashed rgba(200, 131, 74, 0.6);
+}
+.pairing-head { margin: 0 0 0.6rem; display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
+.pairing-head span { font-size: 0.8rem; color: #9a5c2b; font-weight: 600; }
+.pairing-items { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+.pairing-item {
+  display: grid; justify-items: center; gap: 0.15rem; padding: 0.6rem 0.4rem;
+  background: #fff; border: 1.5px solid transparent; border-radius: 12px; cursor: pointer;
+  font: inherit; color: var(--text); transition: border-color 0.15s, transform 0.15s;
+}
+.pairing-item:hover { border-color: var(--caramel); transform: translateY(-2px); }
+.pi-emoji { font-size: 1.6rem; }
+.pi-name { font-size: 0.85rem; font-weight: 600; }
+.pi-price { font-size: 0.8rem; color: var(--caramel); font-weight: 600; }
+.pi-price s { color: var(--muted); font-weight: 400; }
+.cart-total-row.sub { font-size: 0.95rem; color: var(--muted); }
+.cart-total-row.deal { font-size: 0.95rem; color: #3d7a46; font-weight: 600; }
+#cart-adjust { display: grid; gap: 0.3rem; }

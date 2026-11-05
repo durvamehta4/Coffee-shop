@@ -24,6 +24,10 @@
     clear() { cart.lines = []; cart.changed(); },
     count: () => cart.lines.reduce((s, l) => s + l.qty, 0),
     subtotal: () => cart.lines.reduce((s, l) => s + l.qty * l.price, 0),
+    rules: [], // fns (cart) => [{ label, amount }] — discounts registered by other modules
+    discounts: () => cart.rules.flatMap((r) => r(cart) || []).filter((d) => d.amount > 0),
+    total: () => Math.max(0, cart.subtotal() - cart.discounts().reduce((s, d) => s + d.amount, 0)),
+    refresh: () => render(),
     changed(detail = {}) { save(); render(); document.dispatchEvent(new CustomEvent("cart:changed", { detail })); },
   };
 
@@ -71,7 +75,13 @@
           </div>
         </li>`).join("");
     }
-    totalEl.textContent = fmt(cart.subtotal());
+    const ds = cart.lines.length ? cart.discounts() : [];
+    document.getElementById("cart-adjust").innerHTML = ds.length
+      ? `<div class="cart-total-row sub"><span>Subtotal</span><span>${fmt(cart.subtotal())}</span></div>` +
+        ds.map((d) => `<div class="cart-total-row deal"><span>🎉 ${d.label}</span><span>−${fmt(d.amount)}</span></div>`).join("")
+      : "";
+    totalEl.textContent = fmt(cart.total());
+    document.dispatchEvent(new CustomEvent("cart:render"));
     document.getElementById("to-checkout").disabled = !cart.lines.length;
   }
 
@@ -127,7 +137,7 @@
     const order = {
       no: "EB-" + Math.floor(1000 + Math.random() * 9000),
       name, time: slot.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }),
-      lines: cart.lines.map((l) => ({ ...l })), total: cart.subtotal(),
+      lines: cart.lines.map((l) => ({ ...l })), total: cart.total(),
     };
     try { localStorage.setItem("eb-last-order", JSON.stringify(order)); } catch {}
     document.getElementById("confirm-no").textContent = order.no;

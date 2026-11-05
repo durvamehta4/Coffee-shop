@@ -830,3 +830,43 @@ body:has(.hero) .site-header { position: fixed; left: 0; right: 0; }
 .usual-mini { margin-top: 1.5rem; }
 .usual-mini p { margin: 0 0 0.25rem; font-size: 0.85rem; }
 .usual-mini .link-btn { color: var(--caramel); font-weight: 600; }
+
+/* ---------- Beans shop ---------- */
+.center { text-align: center; }
+.beans-section { background: var(--bg-alt); }
+.bean-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+.bean { background: var(--surface); border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+.bean-visual {
+  display: grid; place-items: center; padding: 1.5rem 0 0.5rem;
+  background: radial-gradient(circle at 50% 80%, var(--thumb-a), var(--thumb-b));
+}
+.bag { width: 130px; height: auto; filter: drop-shadow(0 14px 14px rgba(0, 0, 0, 0.2)); transition: transform 0.35s cubic-bezier(0.2, 1.4, 0.4, 1); }
+.bean:hover .bag { transform: translateY(-6px) rotate(-3deg); }
+.bean-body { padding: 1.25rem 1.4rem 1.4rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
+.bean-body h3 { margin: 0; font-size: 1.35rem; }
+.bean-body p { margin: 0; }
+.bean-origin { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--caramel); font-weight: 600; }
+.roast { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--muted); }
+.roast i { display: flex; gap: 3px; }
+.roast b { width: 22px; height: 6px; border-radius: 3px; background: rgba(var(--line-rgb), 0.12); }
+.roast b.on { background: linear-gradient(90deg, #c8834a, #6b3f22); }
+.bean-field { display: grid; gap: 0.25rem; font-size: 0.85rem; font-weight: 600; }
+.bean-field select { padding: 0.55rem 0.7rem; border-radius: 10px; border: 1px solid rgba(var(--line-rgb), 0.25); background: var(--bg); color: var(--text); font: inherit; font-weight: 400; }
+.plans { display: grid; gap: 0.35rem; }
+.plan { position: relative; }
+.plan input { position: absolute; opacity: 0; }
+.plan span {
+  display: flex; justify-content: space-between; padding: 0.5rem 0.75rem; border-radius: 10px; font-size: 0.85rem;
+  border: 1.5px solid rgba(var(--line-rgb), 0.15); cursor: pointer;
+}
+.plan em { font-style: normal; color: #3d7a46; font-weight: 600; font-size: 0.78rem; }
+.plan input:checked + span { border-color: var(--caramel); background: rgba(200, 131, 74, 0.08); }
+.plan input:focus-visible + span { outline: 2px solid var(--caramel); }
+.bean-buy { margin-top: auto; padding-top: 0.5rem; display: flex; justify-content: space-between; align-items: center; }
+.bean-price { font-weight: 700; font-size: 1.2rem; }
+.bean-price small { font-weight: 400; color: var(--muted); font-size: 0.75rem; }
+.bean-price s { font-weight: 400; color: var(--muted); font-size: 0.9rem; }
+@media (max-width: 900px) {
+  .bean-grid { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 82%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 1rem; }
+  .bean { scroll-snap-align: center; }
+}

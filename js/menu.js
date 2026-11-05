@@ -4,7 +4,7 @@
   const thumb = (i, sfx) => (window.cupThumb && cupThumb(i.id, {}, sfx)) || `<span class="food-emoji">${FOOD_ICON[i.id] || "🍽"}</span>`;
   window.renderMenu = function () {
     MENU.forEach(({ cat, items }) => {
-      const panel = document.getElementById(cat);
+      const panel = document.querySelector(`.menu-panel#${cat}`);
       if (!panel) return;
       panel.innerHTML = items.map((i) => card(i)).join("");
     });

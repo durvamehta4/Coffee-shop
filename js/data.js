@@ -22,6 +22,11 @@ window.MENU = [
     { id: "avotoast", nocaf: true, name: "Avocado Toast", desc: "Sourdough, smashed avocado, chili flakes.", price: 8.5, tags: ["vegan"], food: true },
     { id: "sandwich", nocaf: true, name: "Breakfast Sandwich", desc: "Egg, cheddar and bacon or spinach on a brioche bun.", price: 7.75, tags: [], food: true },
   ]},
+  { cat: "beans", items: [
+    { id: "bean-ember", name: "Ember House Blend", desc: "Brazil & Colombia · milk chocolate, toasted hazelnut, caramel.", price: 17, tags: ["vegan"], food: true, retail: true, roast: 4, color: "#c8834a", origin: "Brazil · Colombia" },
+    { id: "bean-sidamo", name: "Ethiopia Sidamo", desc: "Washed heirloom · jasmine, bergamot, ripe peach.", price: 21, tags: ["vegan"], food: true, retail: true, roast: 2, color: "#d9a441", origin: "Sidamo, Ethiopia" },
+    { id: "bean-decaf", name: "Midnight Decaf", desc: "Swiss Water Process Peru · cocoa, brown sugar, plum.", price: 18, tags: ["vegan", "decaf"], food: true, retail: true, nocaf: true, roast: 3, color: "#5b6b8c", origin: "Cajamarca, Peru" },
+  ]},
 ];
 window.MENU_INDEX = Object.fromEntries(window.MENU.flatMap((c) => c.items.map((i) => [i.id, { ...i, cat: c.cat }])));
 window.fmt = (n) => "$" + n.toFixed(2);

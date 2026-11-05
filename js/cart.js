@@ -87,7 +87,9 @@
 
   // Pickup slots: 15-minute slots for the rest of today, plus the next open day for pre-orders.
   function daySlots(base, from) {
-    const [o, c] = window.SHOP_HOURS[base.getDay()];
+    const { hours } = hoursFor(base);
+    if (!hours) return [];
+    const [o, c] = hours;
     const open = new Date(base); open.setHours(o, 0, 0, 0);
     const last = new Date(base); last.setHours(c, 0, 0, 0); last.setTime(last - 15 * 60000);
     let t = from && from > open ? from : open;
@@ -101,20 +103,22 @@
     const start = new Date(now.getTime() + 10 * 60000);
     start.setMinutes(Math.ceil(start.getMinutes() / 15) * 15, 0, 0);
     const today = daySlots(now, start);
-    const tmr = new Date(now); tmr.setDate(now.getDate() + 1);
-    const tomorrow = daySlots(tmr);
+    const nextDay = nextOpening(new Date(new Date(now).setHours(23, 59, 0, 0)));
+    const tomorrow = daySlots(nextDay);
+    const nextLbl = dayLabel(nextDay, now);
     let html = "";
     if (today.length) {
       const asap = Math.round((today[0] - now) / 60000);
       html += `<optgroup label="Today">${today.map((d, i) =>
         `<option value="${d.toISOString()}">${i === 0 && asap <= 25 ? `ASAP (~${asap} min) · ${label(d)}` : label(d)}</option>`).join("")}</optgroup>`;
     }
-    html += `<optgroup label="Tomorrow (pre-order)">${tomorrow.map((d) =>
-      `<option value="${d.toISOString()}">Tomorrow · ${label(d)}</option>`).join("")}</optgroup>`;
+    html += `<optgroup label="${nextLbl} (pre-order)">${tomorrow.map((d) =>
+      `<option value="${d.toISOString()}">${nextLbl} · ${label(d)}</option>`).join("")}</optgroup>`;
     slotSelect.innerHTML = html;
     const note = document.getElementById("slot-note");
     note.hidden = !!today.length;
-    note.textContent = "We're closed for today, but you can pre-order. It'll be ready the moment you arrive tomorrow.";
+    const hol = hoursFor(now).holiday;
+    note.textContent = `We're closed for ${hol ? hol : "the rest of today"}, but you can pre-order. It'll be ready the moment you arrive ${dayInline(nextDay, now)}.`;
   }
 
   // ---- Events ----
@@ -147,7 +151,7 @@
     const slot = new Date(slotSelect.value);
     const order = {
       no: "EB-" + Math.floor(1000 + Math.random() * 9000),
-      name, at: slot.toISOString(), placedAt: new Date().toISOString(), time: slot.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }) + (slot.toDateString() === new Date().toDateString() ? "" : " tomorrow"),
+      name, at: slot.toISOString(), placedAt: new Date().toISOString(), time: slot.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }) + (slot.toDateString() === new Date().toDateString() ? "" : (dayLabel(slot) === "Tomorrow" ? " tomorrow" : " on " + dayLabel(slot))),
       lines: cart.lines.map((l) => ({ ...l })), discounts: cart.discounts(), total: cart.total(),
     };
     try { localStorage.setItem("eb-last-order", JSON.stringify(order)); } catch {}

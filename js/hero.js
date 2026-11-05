@@ -41,18 +41,20 @@
   function status() {
     const el = document.getElementById("qo-status");
     const now = new Date();
-    const [o, c] = SHOP_HOURS[now.getDay()];
+    const { hours } = hoursFor(now);
     const t = now.getHours() + now.getMinutes() / 60;
     const txt = el.querySelector(".qo-status-text");
-    if (t >= o && t < c) {
+    if (isOpenAt(now)) {
+      const c = hours[1];
       const left = Math.round((c - t) * 60);
       const h = Math.floor(left / 60), m = left % 60;
       el.className = "qo-status open";
       txt.textContent = `Open · ready in ~10 min · closes in ${h ? h + "h " : ""}${m}m`;
     } else {
-      const next = SHOP_HOURS[(now.getDay() + (t >= c ? 1 : 0)) % 7][0];
+      const n = nextOpening(now);
       el.className = "qo-status closed";
-      txt.textContent = `Closed now · pre-order for ${t >= c ? "tomorrow" : "today"} ${next > 12 ? next - 12 + " pm" : next + " am"}`;
+      const hh = n.getHours();
+      txt.textContent = `Closed now · pre-order for ${dayInline(n, now)} ${hh > 12 ? hh - 12 + " pm" : hh + " am"}`;
     }
   }
   status();

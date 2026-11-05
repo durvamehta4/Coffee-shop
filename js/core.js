@@ -14,27 +14,9 @@ navLinks.querySelectorAll("a").forEach((link) =>
   })
 );
 
-// ---------- Menu tabs ----------
-const tabs = document.querySelectorAll(".tab");
-const panels = document.querySelectorAll(".menu-panel");
-
-tabs.forEach((tab) =>
-  tab.addEventListener("click", () => {
-    tabs.forEach((t) => {
-      t.classList.remove("active");
-      t.setAttribute("aria-selected", "false");
-    });
-    panels.forEach((p) => p.classList.remove("active"));
-
-    tab.classList.add("active");
-    tab.setAttribute("aria-selected", "true");
-    document.getElementById(tab.dataset.tab).classList.add("active");
-  })
-);
-
 // ---------- Open / closed status ----------
 // Hours by day of week (0 = Sunday), in 24h decimal hours.
-const HOURS = {
+const HOURS = (window.SHOP_HOURS = {
   0: [8, 15],
   1: [7, 18],
   2: [7, 18],
@@ -42,7 +24,7 @@ const HOURS = {
   4: [7, 18],
   5: [7, 18],
   6: [8, 17],
-};
+});
 
 function updateOpenStatus() {
   const el = document.getElementById("open-status");

@@ -15,6 +15,7 @@
   <header class="site-header">
     <div class="container nav">
       <a href="#home" class="logo">Ember <span>&amp;</span> Bean</a>
+      <a href="#" class="cart-icon-mobile" data-open-cart aria-label="View order">🛍<span class="badge" data-cart-count hidden>0</span></a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -22,7 +23,8 @@
         <a href="#about">About</a>
         <a href="#menu">Menu</a>
         <a href="#visit">Visit</a>
-        <a href="#contact" class="btn btn-small">Contact</a>
+        <a href="#contact">Contact</a>
+        <a href="#" class="btn btn-small cart-btn" data-open-cart>Order <span class="badge" data-cart-count hidden>0</span></a>
       </nav>
     </div>
   </header>
@@ -35,7 +37,7 @@
         <h1>Good coffee,<br />slow mornings.</h1>
         <p class="lead">Freshly roasted beans, handmade pastries, and a warm corner to settle into. Come in and stay a while.</p>
         <div class="hero-actions">
-          <a href="#menu" class="btn">See the menu</a>
+          <a href="#menu" class="btn">Order ahead</a>
           <a href="#visit" class="btn btn-outline">Find us</a>
         </div>
       </div>
@@ -61,36 +63,18 @@
     <section id="menu" class="section section-alt">
       <div class="container">
         <h2 class="section-title">Menu</h2>
+        <p class="section-sub">Order ahead and skip the line — pay when you pick up.</p>
         <div class="menu-tabs" role="tablist">
           <button class="tab active" role="tab" aria-selected="true" data-tab="coffee">Coffee</button>
           <button class="tab" role="tab" aria-selected="false" data-tab="tea">Tea &amp; More</button>
           <button class="tab" role="tab" aria-selected="false" data-tab="food">Food</button>
         </div>
 
-        <div class="menu-panel active" id="coffee" role="tabpanel">
-          <div class="menu-item"><div><h3>Espresso</h3><p>Double shot of our house blend.</p></div><span class="price">$3.00</span></div>
-          <div class="menu-item"><div><h3>Americano</h3><p>Espresso lengthened with hot water.</p></div><span class="price">$3.50</span></div>
-          <div class="menu-item"><div><h3>Cappuccino</h3><p>Equal parts espresso, milk and foam.</p></div><span class="price">$4.25</span></div>
-          <div class="menu-item"><div><h3>Flat White</h3><p>Velvety microfoam over a double ristretto.</p></div><span class="price">$4.50</span></div>
-          <div class="menu-item"><div><h3>Latte</h3><p>Espresso with steamed milk. Add vanilla or caramel +$0.50.</p></div><span class="price">$4.75</span></div>
-          <div class="menu-item"><div><h3>Pour Over</h3><p>Single-origin, brewed by hand. Ask about today's beans.</p></div><span class="price">$5.00</span></div>
-          <div class="menu-item"><div><h3>Cold Brew</h3><p>Steeped 18 hours, smooth and chocolatey.</p></div><span class="price">$4.50</span></div>
-          <div class="menu-item"><div><h3>Mocha</h3><p>Espresso, dark chocolate and steamed milk.</p></div><span class="price">$5.25</span></div>
-        </div>
+        <div class="menu-panel active" id="coffee" role="tabpanel"></div>
 
-        <div class="menu-panel" id="tea" role="tabpanel">
-          <div class="menu-item"><div><h3>Chai Latte</h3><p>House-spiced chai with steamed milk.</p></div><span class="price">$4.75</span></div>
-          <div class="menu-item"><div><h3>Matcha Latte</h3><p>Ceremonial-grade matcha, lightly sweetened.</p></div><span class="price">$5.00</span></div>
-          <div class="menu-item"><div><h3>Loose-Leaf Tea</h3><p>Earl Grey, green, chamomile or peppermint.</p></div><span class="price">$3.25</span></div>
-          <div class="menu-item"><div><h3>Hot Chocolate</h3><p>Rich dark chocolate, topped with whipped cream.</p></div><span class="price">$4.00</span></div>
-        </div>
+        <div class="menu-panel" id="tea" role="tabpanel"></div>
 
-        <div class="menu-panel" id="food" role="tabpanel">
-          <div class="menu-item"><div><h3>Butter Croissant</h3><p>Flaky, golden, baked this morning.</p></div><span class="price">$3.50</span></div>
-          <div class="menu-item"><div><h3>Blueberry Muffin</h3><p>Bursting with berries and a crumb top.</p></div><span class="price">$3.25</span></div>
-          <div class="menu-item"><div><h3>Avocado Toast</h3><p>Sourdough, smashed avocado, chili flakes.</p></div><span class="price">$8.50</span></div>
-          <div class="menu-item"><div><h3>Breakfast Sandwich</h3><p>Egg, cheddar and bacon or spinach on a brioche bun.</p></div><span class="price">$7.75</span></div>
-        </div>
+        <div class="menu-panel" id="food" role="tabpanel"></div>
       </div>
     </section>
 
@@ -145,6 +129,45 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+
+  <!-- Cart drawer -->
+  <div class="drawer-overlay" id="cart-overlay"></div>
+  <aside class="drawer" id="cart-drawer" aria-hidden="true" aria-label="Your order">
+    <div class="drawer-head">
+      <h2>Your order</h2>
+      <button class="drawer-close" aria-label="Close order">✕</button>
+    </div>
+
+    <div data-step="cart" class="drawer-body">
+      <ul class="cart-lines" id="cart-lines"></ul>
+      <div class="drawer-foot">
+        <div class="cart-total-row"><span>Subtotal</span><strong id="cart-total">$0.00</strong></div>
+        <button class="btn btn-block" id="to-checkout">Choose pickup time →</button>
+      </div>
+    </div>
+
+    <form data-step="checkout" class="drawer-body" id="checkout-form" hidden>
+      <div class="field"><label for="cname">Name for the order</label><input id="cname" name="cname" autocomplete="given-name" required /></div>
+      <div class="field"><label for="pickup-slot">Pickup time</label><select id="pickup-slot" name="slot"></select></div>
+      <p class="muted small">No card needed — pay at the counter when you pick up.</p>
+      <div class="drawer-foot">
+        <button type="submit" class="btn btn-block">Place order</button>
+        <button type="button" class="link-btn" id="back-to-cart">← Back to order</button>
+      </div>
+    </form>
+
+    <div data-step="done" class="drawer-body confirm" hidden>
+      <div class="confirm-cup" aria-hidden="true">☕</div>
+      <h3>Order <span id="confirm-no"></span> is in!</h3>
+      <p>Thanks, <strong id="confirm-name"></strong>. Your order will be ready at <strong id="confirm-time"></strong>.</p>
+      <p class="muted">Total due at pickup: <strong id="confirm-total"></strong></p>
+      <button class="btn btn-block" onclick="closeCart()">Done</button>
+    </div>
+  </aside>
+
+  <script src="js/data.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/cart.js"></script>
 </body>
 </html>

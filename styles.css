@@ -1799,3 +1799,11 @@ body.has-strip .menu-tabs { top: 108px; }
 .prefill-note { margin: 0; padding: 0.55rem 0.8rem; border-radius: 10px; background: color-mix(in srgb, var(--ok) 12%, transparent); color: var(--ok); font-size: 0.85rem; font-weight: 600; }
 .btn-usual { box-shadow: 0 10px 26px rgba(224, 163, 108, 0.35); }
 .hero-actions .btn-outline { color: #fff; }
+/* Hubs read as one continuous surface */
+.hub { background: var(--bg-alt); }
+#story.hub { background: var(--bg); }
+.hub .hub-panel { background: transparent; }
+.hub .hub-panel.section { padding-top: 2.5rem; }
+.hub .hub-panel.planet { background: linear-gradient(180deg, transparent, color-mix(in srgb, #3d7a46 8%, transparent)); }
+:root[data-theme="dark"] .bag { filter: drop-shadow(0 0 1.5px rgba(240, 200, 160, 0.55)) drop-shadow(0 14px 14px rgba(0, 0, 0, 0.4)); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bag { filter: drop-shadow(0 0 1.5px rgba(240, 200, 160, 0.55)) drop-shadow(0 14px 14px rgba(0, 0, 0, 0.4)); } }

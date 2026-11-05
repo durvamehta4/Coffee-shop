@@ -1,5 +1,6 @@
 // Zero-dependency static server for local dev and tests.
 import http from "node:http";
+import { gzipSync } from "node:zlib";
 import { readFile } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -15,8 +16,12 @@ export function serve(port = Number(process.env.PORT) || 8080) {
     const file = normalize(join(root, path));
     if (!file.startsWith(root)) { res.writeHead(403).end(); return; }
     try {
-      const body = await readFile(file);
-      res.writeHead(200, { "content-type": TYPES[extname(file)] || "application/octet-stream" }).end(body);
+      let body = await readFile(file);
+      const headers = { "content-type": TYPES[extname(file)] || "application/octet-stream" };
+      if (/gzip/.test(req.headers["accept-encoding"] || "") && /text|javascript|json|svg|manifest/.test(headers["content-type"])) {
+        body = gzipSync(body); headers["content-encoding"] = "gzip"; // match production hosts
+      }
+      res.writeHead(200, headers).end(body);
     } catch {
       try { res.writeHead(404, { "content-type": "text/html" }).end(await readFile(join(root, "404.html"))); }
       catch { res.writeHead(404, { "content-type": "text/plain" }).end("Not found"); }

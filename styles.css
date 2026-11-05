@@ -1386,3 +1386,15 @@ body.no-scroll .toast { opacity: 0; pointer-events: none; }
 .faq-list details[open] summary::after { transform: rotate(45deg); }
 .faq-list details p { margin: 0.6rem 0 0; color: var(--muted); font-size: 0.93rem; }
 @media (max-width: 800px) { .faq { grid-template-columns: 1fr; gap: 2rem; } }
+
+/* ---------- Chapter rail ---------- */
+.rail { position: fixed; z-index: 25; right: 1.1rem; top: 50%; transform: translateY(-50%); display: grid; gap: 0.55rem; }
+.rail a { display: flex; justify-content: flex-end; align-items: center; gap: 0.6rem; text-decoration: none; height: 12px; }
+.rail a::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: rgba(var(--line-rgb), 0.3); transition: transform 0.2s, background 0.2s; }
+.rail.dark a::after { background: rgba(247, 241, 232, 0.4); }
+.rail a.on::after { background: var(--caramel); transform: scale(1.5); }
+.rail a span { font-size: 0.75rem; font-weight: 600; color: var(--text); background: var(--surface); padding: 0.2rem 0.55rem; border-radius: 999px; box-shadow: var(--shadow); opacity: 0; transform: translateX(6px); transition: opacity 0.2s, transform 0.2s; pointer-events: none; white-space: nowrap; }
+.rail:hover a span, .rail a:focus-visible span { opacity: 1; transform: none; }
+.rail a:hover::after { transform: scale(1.5); }
+@media (max-width: 1320px) { .rail { right: 0.4rem; } }
+@media (max-width: 1100px) { .rail { display: none; } }

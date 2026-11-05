@@ -18,7 +18,8 @@ export function serve(port = Number(process.env.PORT) || 8080) {
       const body = await readFile(file);
       res.writeHead(200, { "content-type": TYPES[extname(file)] || "application/octet-stream" }).end(body);
     } catch {
-      res.writeHead(404, { "content-type": "text/plain" }).end("Not found");
+      try { res.writeHead(404, { "content-type": "text/html" }).end(await readFile(join(root, "404.html"))); }
+      catch { res.writeHead(404, { "content-type": "text/plain" }).end("Not found"); }
     }
   });
   return new Promise((r) => server.listen(port, () => r(server)));

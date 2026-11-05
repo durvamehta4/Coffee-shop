@@ -5,8 +5,8 @@
   bar.innerHTML = `
     <a href="#home" class="tb"><svg class="ico" aria-hidden="true"><use href="#i-home"/></svg>Home</a>
     <a href="#menu" class="tb"><svg class="ico" aria-hidden="true"><use href="#i-cup"/></svg>Menu</a>
-    <button class="tb" onclick="openPalette()"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>Search</button>
-    <button class="tb" onclick="openMe()"><svg class="ico" aria-hidden="true"><use href="#i-user"/></svg>Me</button>
+    <button class="tb" data-call="openPalette"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>Search</button>
+    <button class="tb" data-call="openMe"><svg class="ico" aria-hidden="true"><use href="#i-user"/></svg>Me</button>
     <button class="tb tb-order" data-open-cart><span class="tb-ico" aria-hidden="true"><svg class="ico"><use href="#i-bag"/></svg><b class="tb-badge" hidden></b></span><span class="tb-label">Order</span></button>`;
   document.body.appendChild(bar);
   function update(e) {

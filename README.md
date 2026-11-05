@@ -60,6 +60,10 @@ Any URL that accepts a JSON `POST` works (Formspree, a Zapier or Make webhook, G
 
 The shop name, address, phone, prices, events and the reviews in `js/reviews.js` are sample content. Replace the reviews with real customer quotes (with permission) before going live.
 
+## Security
+
+`index.html` ships a strict Content Security Policy: scripts only from the site, cdnjs and SHA-256-hashed inline blocks, with no inline event handlers (actions use `data-call="fn"`). If you edit an inline `<script>`, run `node tests/csp-hash.mjs` to refresh the hashes. The test suite fails on any CSP violation.
+
 ## Experiments
 
 `js/experiments.js` runs lightweight A/B tests with sticky per-visitor variants. Each exposure pushes `experiment_exposure` and each purchase pushes `experiment_conversion` to `window.dataLayer`. Force a variant for QA with `?ab=hero_cta:skip,checkout_cta:paylater`.

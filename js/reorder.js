@@ -23,14 +23,14 @@
     if (!box) { box = document.createElement("div"); box.id = "usual"; box.className = "usual"; card.querySelector(".qo-title").before(box); }
     box.innerHTML = `
       <div class="usual-text"><small>Welcome back${o.name ? ", " + o.name : ""} · your usual?</small><strong>${summary(o)}</strong></div>
-      <button class="btn btn-small" onclick="reorderLast()">Reorder · ${fmt(subtotal(o))}</button>`;
+      <button class="btn btn-small" data-call="reorderLast">Reorder · ${fmt(subtotal(o))}</button>`;
   }
 
   document.addEventListener("cart:render", () => {
     const o = last();
     const empty = document.querySelector(".cart-empty");
     if (o && empty && !empty.querySelector(".usual-mini")) {
-      empty.insertAdjacentHTML("beforeend", `<div class="usual-mini"><p>Or reorder your last one:</p><button class="link-btn" onclick="reorderLast()">↻ ${summary(o)}</button></div>`);
+      empty.insertAdjacentHTML("beforeend", `<div class="usual-mini"><p>Or reorder your last one:</p><button class="link-btn" data-call="reorderLast">↻ ${summary(o)}</button></div>`);
     }
   });
   document.addEventListener("order:placed", render);

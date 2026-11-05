@@ -77,7 +77,7 @@
     el.hidden = false;
     el.innerHTML = get()
       ? `☕ You'll earn <strong>${n} stamp${n > 1 ? "s" : ""}</strong> with this order.`
-      : `☕ Earn <strong>${n} stamp${n > 1 ? "s" : ""}</strong> toward a free drink. <a href="#rewards" onclick="closeCart()">Join Ember Club</a>`;
+      : `☕ Earn <strong>${n} stamp${n > 1 ? "s" : ""}</strong> toward a free drink. <a href="#rewards" data-call="closeCart">Join Ember Club</a>`;
   });
 
   document.addEventListener("order:placed", (e) => {

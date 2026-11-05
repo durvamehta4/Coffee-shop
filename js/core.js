@@ -1,3 +1,9 @@
+// Delegated actions (CSP-safe replacement for inline onclick): <button data-call="openMe">
+document.addEventListener("click", (e) => {
+  const el = e.target.closest("[data-call]");
+  if (el && typeof window[el.dataset.call] === "function") window[el.dataset.call]();
+});
+
 // ---------- Mobile navigation ----------
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");

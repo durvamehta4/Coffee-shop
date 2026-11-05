@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-1TtPuopa0j1p44FkR974Z+G6awyz1YnvXdOUVY1LtHU=' 'sha256-xHba+mokxhdKBYxXcB30bIl9G98xgB1b+O9jKdViwEY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://images.unsplash.com; connect-src 'self' https:; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ember &amp; Bean Coffee</title>
   <meta name="description" content="Ember & Bean — small-batch roasted coffee, fresh pastries, and a cozy place to stay a while." />
@@ -101,8 +103,8 @@
   <header class="site-header">
     <div class="container nav">
       <a href="#home" class="logo">Ember <span>&amp;</span> Bean</a>
-      <button class="theme-toggle me-btn" onclick="openMe()" aria-label="My Ember: favorites and past orders"><svg class="ico"><use href="#i-user"/></svg></button>
-      <button class="theme-toggle pal-btn" onclick="openPalette()" aria-label="Quick order search (press /)"><svg class="ico"><use href="#i-search"/></svg></button>
+      <button class="theme-toggle me-btn" data-call="openMe" aria-label="My Ember: favorites and past orders"><svg class="ico"><use href="#i-user"/></svg></button>
+      <button class="theme-toggle pal-btn" data-call="openPalette" aria-label="Quick order search (press /)"><svg class="ico"><use href="#i-search"/></svg></button>
       <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme"><svg class="ico"><use href="#i-moon"/></svg></button>
       <a href="#" class="cart-icon-mobile" data-open-cart aria-label="View order">🛍<span class="badge" data-cart-count hidden>0</span></a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -200,7 +202,7 @@
     <section id="menu" class="section section-alt">
       <div class="container">
         <h2 class="section-title">Menu</h2>
-        <p class="section-sub">Order ahead and skip the line — pay when you pick up. <button class="link-btn print-link" onclick="printMenu()">🖨 Print menu</button></p>
+        <p class="section-sub">Order ahead and skip the line — pay when you pick up. <button class="link-btn print-link" data-call="printMenu">🖨 Print menu</button></p>
         <div class="menu-tools">
           <label class="menu-search">
             <span aria-hidden="true">🔍</span>
@@ -546,7 +548,7 @@
     </div>
     <div class="container footer-bottom">
       <p>&copy; <span id="year"></span> Ember &amp; Bean Coffee. Brewed with care.</p>
-      <span class="footer-tools"><button class="link-btn a11y-btn" onclick="openPrefs()">Aa Display &amp; accessibility</button><a href="#home" class="to-top">Back to top ↑</a></span>
+      <span class="footer-tools"><button class="link-btn a11y-btn" data-call="openPrefs">Aa Display &amp; accessibility</button><a href="#home" class="to-top">Back to top ↑</a></span>
     </div>
   </footer>
 
@@ -600,7 +602,7 @@
       <p class="muted">Total due at pickup: <strong id="confirm-total"></strong></p>
       <p class="send-status" id="confirm-send" aria-live="polite"></p>
       <p class="small muted">Track it live from the card in the corner of the page.</p>
-      <button class="btn btn-block" onclick="closeCart()">Done</button>
+      <button class="btn btn-block" data-call="closeCart">Done</button>
     </div>
   </aside>
 

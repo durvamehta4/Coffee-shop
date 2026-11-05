@@ -13,6 +13,7 @@ async function page(width = 1280, clock) {
   const p = await ctx.newPage();
   p.errors = [];
   p.on("pageerror", (e) => p.errors.push(e.message));
+  p.on("console", (m) => { if (/Content Security Policy/.test(m.text())) p.errors.push("CSP: " + m.text().slice(0, 140)); });
   await p.route("**/api.open-meteo.com/**", (r) => r.fulfill({ contentType: "application/json", body: '{"current":{"temperature_2m":17,"weather_code":2}}' }));
   await p.route("**/images.unsplash.com/**", (r) => r.fulfill({ status: 204 }));
   if (clock) await p.clock.install({ time: new Date(clock) });
@@ -101,8 +102,8 @@ await test("shared order link round-trips into another cart", async () => {
 
 for (const scheme of ["light", "dark"]) {
   await test(`no WCAG 2 A/AA violations (axe-core, ${scheme})`, async () => {
-    let axeSrc;
-    try { axeSrc = await (await fetch("https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js")).text(); }
+    const AXE = "https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js"; // allowed by the site's CSP
+    try { await fetch(AXE, { method: "HEAD" }); }
     catch { results.push("  (axe-core unavailable offline, skipped)"); return; }
     const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, colorScheme: scheme, reducedMotion: "reduce" });
     await ctx.addInitScript(() => { try { localStorage.setItem("eb-welcome", '{"state":"dismissed"}'); } catch {} });
@@ -111,7 +112,7 @@ for (const scheme of ["light", "dark"]) {
     await p.route("**/images.unsplash.com/**", (r) => r.fulfill({ status: 204 }));
     await p.goto(BASE); await p.waitForTimeout(400);
     await p.evaluate(() => document.querySelectorAll(".reveal").forEach((e) => e.classList.add("in")));
-    await p.addScriptTag({ content: axeSrc });
+    await p.addScriptTag({ url: AXE });
     const v = await p.evaluate(async () => (await axe.run(document, { runOnly: ["wcag2a", "wcag2aa"] })).violations.map((x) => `${x.id} (${x.nodes.length}): ${x.nodes[0].target.join(" ")}`));
     assert(!v.length, v.join("; "));
     await ctx.close();

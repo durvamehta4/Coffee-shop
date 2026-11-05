@@ -71,7 +71,7 @@
     if (!cart.lines.length && lr) {
       linesEl.innerHTML = undoRow;
     } else if (!cart.lines.length) {
-      linesEl.innerHTML = `<div class="cart-empty"><p>Your order is empty.</p><a href="#menu" class="btn btn-small" onclick="closeCart()">Browse the menu</a></div>`;
+      linesEl.innerHTML = `<div class="cart-empty"><p>Your order is empty.</p><a href="#menu" class="btn btn-small" data-call="closeCart">Browse the menu</a></div>`;
     } else {
       linesEl.innerHTML = cart.lines.map((l) => `
         <li class="cart-line">

@@ -1775,3 +1775,4 @@ body.has-strip .hub-tabs { top: 112px; }
 .rate-next .btn { justify-self: start; }
 .rate-next textarea { width: 100%; border-radius: 10px; border: 1px solid rgba(var(--line-rgb), 0.25); background: var(--bg); color: var(--text); font: inherit; padding: 0.5rem; }
 @media (max-width: 800px) { .rate-card { left: 0.75rem; right: 0.75rem; width: auto; bottom: 5.25rem; } }
+.habit { color: var(--caramel); font-weight: 600; font-size: 0.88rem; }

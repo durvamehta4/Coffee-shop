@@ -85,25 +85,36 @@
     document.getElementById("to-checkout").disabled = !cart.lines.length;
   }
 
-  // Pickup slots: every 15 minutes from now+10min until closing, today only.
+  // Pickup slots: 15-minute slots for the rest of today, plus the next open day for pre-orders.
+  function daySlots(base, from) {
+    const [o, c] = window.SHOP_HOURS[base.getDay()];
+    const open = new Date(base); open.setHours(o, 0, 0, 0);
+    const last = new Date(base); last.setHours(c, 0, 0, 0); last.setTime(last - 15 * 60000);
+    let t = from && from > open ? from : open;
+    const out = [];
+    while (t <= last) { out.push(new Date(t)); t = new Date(t.getTime() + 15 * 60000); }
+    return out;
+  }
+  const label = (d) => d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
   function buildSlots() {
-    const hours = window.SHOP_HOURS[new Date().getDay()];
     const now = new Date();
     const start = new Date(now.getTime() + 10 * 60000);
     start.setMinutes(Math.ceil(start.getMinutes() / 15) * 15, 0, 0);
-    const close = new Date(now); close.setHours(hours[1], 0, 0, 0);
-    const open = new Date(now); open.setHours(hours[0], 0, 0, 0);
-    let t = start < open ? open : start;
-    const opts = [];
-    const asap = Math.round((t - now) / 60000);
-    while (t <= new Date(close.getTime() - 15 * 60000)) {
-      const label = t.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
-      opts.push(`<option value="${t.toISOString()}">${opts.length === 0 && asap <= 25 ? `ASAP (~${asap} min) — ${label}` : label}</option>`);
-      t = new Date(t.getTime() + 15 * 60000);
+    const today = daySlots(now, start);
+    const tmr = new Date(now); tmr.setDate(now.getDate() + 1);
+    const tomorrow = daySlots(tmr);
+    let html = "";
+    if (today.length) {
+      const asap = Math.round((today[0] - now) / 60000);
+      html += `<optgroup label="Today">${today.map((d, i) =>
+        `<option value="${d.toISOString()}">${i === 0 && asap <= 25 ? `ASAP (~${asap} min) · ${label(d)}` : label(d)}</option>`).join("")}</optgroup>`;
     }
-    slotSelect.innerHTML = opts.join("") || `<option value="">We're closed for today — sorry!</option>`;
-    slotSelect.disabled = !opts.length;
-    checkoutForm.querySelector("button[type=submit]").disabled = !opts.length;
+    html += `<optgroup label="Tomorrow (pre-order)">${tomorrow.map((d) =>
+      `<option value="${d.toISOString()}">Tomorrow · ${label(d)}</option>`).join("")}</optgroup>`;
+    slotSelect.innerHTML = html;
+    const note = document.getElementById("slot-note");
+    note.hidden = !!today.length;
+    note.textContent = "We're closed for today, but you can pre-order. It'll be ready the moment you arrive tomorrow.";
   }
 
   // ---- Events ----
@@ -136,7 +147,7 @@
     const slot = new Date(slotSelect.value);
     const order = {
       no: "EB-" + Math.floor(1000 + Math.random() * 9000),
-      name, at: slot.toISOString(), placedAt: new Date().toISOString(), time: slot.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }),
+      name, at: slot.toISOString(), placedAt: new Date().toISOString(), time: slot.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }) + (slot.toDateString() === new Date().toDateString() ? "" : " tomorrow"),
       lines: cart.lines.map((l) => ({ ...l })), discounts: cart.discounts(), total: cart.total(),
     };
     try { localStorage.setItem("eb-last-order", JSON.stringify(order)); } catch {}

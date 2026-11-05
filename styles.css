@@ -899,3 +899,5 @@ body:has(.hero) .site-header { position: fixed; left: 0; right: 0; }
 .week li { display: flex; justify-content: space-between; padding: 0.45rem 0.75rem; border-radius: 10px; color: var(--muted); }
 .week li.today { background: var(--surface); color: var(--text); font-weight: 600; box-shadow: var(--shadow); }
 .week em { font-style: normal; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; background: var(--caramel); color: #fff; padding: 0.1rem 0.45rem; border-radius: 999px; margin-left: 0.4rem; vertical-align: 2px; }
+.slot-note { margin: 0; padding: 0.75rem 0.9rem; border-radius: 12px; background: var(--deal-bg); font-size: 0.88rem; }
+.slot-note[hidden] { display: none; }

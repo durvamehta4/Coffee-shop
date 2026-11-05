@@ -30,7 +30,7 @@
       <button class="tracker-x" aria-label="Hide order tracker">✕</button>
       <div class="tracker-ring">
         <svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="22" class="ring-bg"/><circle cx="26" cy="26" r="22" class="ring-fg" stroke-dasharray="${C}" stroke-dashoffset="${C * (1 - pct)}"/></svg>
-        <span>${st.i === 2 ? "✓" : mins + "<small>min</small>"}</span>
+        <span>${st.i === 2 ? "✓" : mins > 90 ? Math.round(mins / 60) + "<small>hrs</small>" : mins + "<small>min</small>"}</span>
       </div>
       <div class="tracker-info">
         <small>${o.no} · ${o.name}</small>

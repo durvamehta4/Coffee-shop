@@ -27,7 +27,7 @@
     } else {
       const next = SHOP_HOURS[(now.getDay() + (t >= c ? 1 : 0)) % 7][0];
       el.className = "qo-status closed";
-      txt.textContent = `Closed · opens ${t >= c ? "tomorrow" : "today"} at ${next > 12 ? next - 12 + " pm" : next + " am"}`;
+      txt.textContent = `Closed now · pre-order for ${t >= c ? "tomorrow" : "today"} ${next > 12 ? next - 12 + " pm" : next + " am"}`;
     }
   }
   status();

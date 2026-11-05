@@ -20,6 +20,10 @@ npm start          # http://localhost:8080 (zero-dependency static server)
 
 Or open `index.html` directly. A few features (service worker, share links) need `http://`.
 
+## Deploy
+
+Pushing to `main` runs the test suite and then publishes the site to GitHub Pages (`.github/workflows/pages.yml`). Turn it on once under **Settings → Pages → Source: GitHub Actions**. Any static host (Netlify, Cloudflare Pages, S3) also works. Just upload the files, since there's no build step.
+
 ## Test it
 
 ```bash

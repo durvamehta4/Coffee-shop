@@ -136,7 +136,7 @@
     const slot = new Date(slotSelect.value);
     const order = {
       no: "EB-" + Math.floor(1000 + Math.random() * 9000),
-      name, time: slot.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }),
+      name, at: slot.toISOString(), placedAt: new Date().toISOString(), time: slot.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }),
       lines: cart.lines.map((l) => ({ ...l })), discounts: cart.discounts(), total: cart.total(),
     };
     try { localStorage.setItem("eb-last-order", JSON.stringify(order)); } catch {}

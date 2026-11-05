@@ -1820,3 +1820,17 @@ body.has-strip .menu-tabs { top: 108px; }
 .keys li { display: grid; grid-template-columns: 52px 1fr; align-items: center; font-size: 0.92rem; }
 .keys kbd { justify-self: start; min-width: 28px; text-align: center; font-size: 0.8rem; padding: 0.2rem 0.45rem; }
 @media (hover: none) { .keys-btn { display: none; } }
+.footer-acc { display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-acc summary { list-style: none; font: 600 0.75rem Inter, sans-serif; text-transform: uppercase; letter-spacing: 0.14em; color: var(--caramel); margin-bottom: 0.4rem; cursor: default; }
+.footer-acc summary::-webkit-details-marker { display: none; }
+.footer-acc > :not(summary) { display: block; }
+.footer-acc a, .footer-acc p { display: block; margin: 0 0 0.5rem; }
+@media (max-width: 800px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 0; }
+  .footer-brand { margin-bottom: 1.25rem; }
+  .footer-col { border-top: 1px solid rgba(247, 241, 232, 0.12); padding: 0.9rem 0; }
+  .footer-acc summary { cursor: pointer; display: flex; justify-content: space-between; margin: 0; }
+  .footer-acc summary::after { content: "+"; font-size: 1.2rem; line-height: 1; transition: transform 0.2s; }
+  .footer-acc[open] summary { margin-bottom: 0.6rem; }
+  .footer-acc[open] summary::after { transform: rotate(45deg); }
+}

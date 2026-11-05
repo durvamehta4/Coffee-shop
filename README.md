@@ -46,6 +46,16 @@ Add `?debug=funnel` to the URL to see a live conversion funnel.
 | `assets/` | Favicon and social share image |
 | `tests/` | Static server and end-to-end checks |
 
+## Going live: receiving orders
+
+Orders work end-to-end in the browser, but they reach the shop only once you set an endpoint in `js/config.js`:
+
+```js
+window.SHOP_CONFIG = { ORDER_ENDPOINT: "https://your-webhook.example/orders", ORDER_EMAIL_FALLBACK: "orders@yourshop.com" };
+```
+
+Any URL that accepts a JSON `POST` works (Formspree, a Zapier or Make webhook, Google Apps Script, or your POS). Failed sends wait in an on-device outbox and retry automatically when the connection returns. Until an endpoint is set, the confirmation screen says the site is in demo mode.
+
 ## Placeholder content
 
 The shop name, address, phone, prices, events and the reviews in `js/reviews.js` are sample content. Replace the reviews with real customer quotes (with permission) before going live.

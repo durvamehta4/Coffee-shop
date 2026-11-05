@@ -49,8 +49,8 @@
       ${steam}
       <defs><clipPath id="${uid}"><path d="${clip}"/></clipPath></defs>
       <g clip-path="url(#${uid})">${rects}${ice}</g>
-      <path d="${clip}" fill="none" stroke="#4a3226" stroke-width="3" stroke-linejoin="round"/>
-      ${!iced ? `<path d="M${R - 2} ${top + 20} q 26 6 ${-inset / 2} ${H / 2.4}" fill="none" stroke="#4a3226" stroke-width="3"/>` : `<rect x="${100 + 8}" y="${top - 30}" width="6" height="${H}" fill="#c8834a" transform="rotate(12 110 ${top})"/>`}
+      <path d="${clip}" fill="none" class="cup-line" stroke="#4a3226" stroke-width="3" stroke-linejoin="round"/>
+      ${!iced ? `<path d="M${R - 2} ${top + 20} q 26 6 ${-inset / 2} ${H / 2.4}" fill="none" class="cup-line" stroke="#4a3226" stroke-width="3"/>` : `<rect x="${100 + 8}" y="${top - 30}" width="6" height="${H}" fill="#c8834a" transform="rotate(12 110 ${top})"/>`}
       <ellipse cx="100" cy="188" rx="${W / 2}" ry="5" fill="rgba(43,29,22,.12)"/>
     </svg>`;
   }

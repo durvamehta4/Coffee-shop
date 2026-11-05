@@ -1105,3 +1105,23 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius
 .cater .field input { width: 100%; }
 @media (max-width: 800px) { .catering { grid-template-columns: 1fr; gap: 2rem; } .cater { padding: 1.25rem; } }
 .wx { display: inline-flex; margin: 0.5rem 0 0 0.4rem; padding: 0.35rem 0.75rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; background: rgba(255, 250, 243, 0.14); color: var(--cream); }
+
+/* ---------- Nutrition meter ---------- */
+.builder-visual { align-content: center; gap: 1.25rem; }
+.builder-nutr { width: min(260px, 100%); }
+.nutr { background: color-mix(in srgb, var(--surface) 75%, transparent); border-radius: 14px; padding: 0.8rem 0.9rem; font-size: 0.85rem; display: grid; gap: 0.35rem; }
+.nutr-row { display: flex; justify-content: space-between; }
+.nutr-row.cal { margin-top: 0.3rem; padding-top: 0.45rem; border-top: 1px solid rgba(var(--line-rgb), 0.12); }
+.nutr small { color: var(--muted); font-size: 0.75rem; }
+.meter { height: 7px; border-radius: 7px; background: rgba(var(--line-rgb), 0.12); overflow: hidden; }
+.meter i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #d9a441, var(--caramel)); transition: width 0.35s ease; }
+.meter i.hi { background: linear-gradient(90deg, var(--caramel), #a54a3a); }
+@media (max-width: 700px) {
+  .builder-visual { grid-template-columns: 150px 1fr; align-items: center; gap: 0.75rem; }
+  .nutr { font-size: 0.78rem; padding: 0.6rem; }
+}
+.builder-close { background: var(--surface); border-radius: 50%; width: 34px; height: 34px; display: grid; place-items: center; padding: 0; box-shadow: var(--shadow); }
+@media (max-width: 700px) {
+  .builder-nutr { margin-right: 2.25rem; }
+  .builder-add { position: sticky; bottom: 0.75rem; box-shadow: 0 10px 30px rgba(200, 131, 74, 0.45); }
+}

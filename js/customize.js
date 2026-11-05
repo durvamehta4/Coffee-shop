@@ -27,6 +27,33 @@
   const MILKY = (id) => (RECIPES[id] || []).some(([l]) => ["milk", "foam", "oat"].includes(l));
   const SHOTTY = (id) => (RECIPES[id] || []).some(([l]) => l === "espresso");
 
+  // Estimated nutrition, medium with whole milk.
+  const NUTR = {
+    espresso: [130, 5], americano: [150, 10], cappuccino: [130, 130], flatwhite: [130, 170], latte: [130, 190],
+    pourover: [180, 5], coldbrew: [200, 5], mocha: [130, 290], chai: [50, 240], matcha: [70, 220], tea: [40, 0],
+    cocoa: [5, 320], gingerbread: [130, 280], pepmocha: [130, 360], maplecortado: [130, 120],
+  };
+  function nutrition() {
+    const [caf, cal] = NUTR[state.id] || [100, 100];
+    const sz = { Small: 0.8, Medium: 1, Large: 1.25 }[state.size];
+    const milkF = { Oat: 1.1, Almond: 0.65, Skim: 0.6 }[state.milk] || 1;
+    const sweet = { Light: 30, Regular: 60, Vanilla: 70 }[state.sweet] || 0;
+    const isMilky = MILKY(state.id);
+    return {
+      caf: Math.round(caf * (["espresso", "cappuccino", "flatwhite", "latte", "mocha", "gingerbread", "pepmocha", "maplecortado"].includes(state.id) ? 1 : sz) + state.shots * 75),
+      cal: Math.round((isMilky ? cal * milkF : cal) * sz + sweet + state.shots * 3),
+    };
+  }
+  function nutrHTML() {
+    const n = nutrition(), pct = Math.min(100, Math.round((n.caf / 400) * 100));
+    return `<div class="nutr" aria-live="polite">
+      <div class="nutr-row"><span>⚡ Caffeine</span><strong>${n.caf} mg</strong></div>
+      <div class="meter"><i style="width:${pct}%" class="${pct > 60 ? "hi" : ""}"></i></div>
+      <small>${pct}% of the 400 mg daily guideline${pct > 60 ? " · that's a strong one!" : ""}</small>
+      <div class="nutr-row cal"><span>🔥 Calories</span><strong>~${n.cal}</strong></div>
+    </div>`;
+  }
+
   const sheet = document.getElementById("builder");
   const state = {};
 
@@ -85,6 +112,7 @@
       (SHOTTY(id) ? `<fieldset class="opt-group"><legend>Extra espresso shots <em>+$0.90 each</em></legend>
         <div class="stepper"><button type="button" data-shot="-1" aria-label="Fewer shots">−</button><output>${state.shots}</output><button type="button" data-shot="1" aria-label="More shots">+</button></div></fieldset>` : "") +
       group("sweet", "Sweetness", [{ v: "None" }, { v: "Light" }, { v: "Regular" }, { v: "Vanilla", d: 0.5 }]);
+    sheet.querySelector(".builder-nutr").innerHTML = nutrHTML();
   }
 
   function open(id, preset = {}) {

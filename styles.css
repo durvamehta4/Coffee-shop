@@ -1834,3 +1834,8 @@ body.has-strip .menu-tabs { top: 108px; }
   .footer-acc[open] summary { margin-bottom: 0.6rem; }
   .footer-acc[open] summary::after { transform: rotate(45deg); }
 }
+/* Checkout: keep "Place order" visible while the form scrolls */
+#checkout-form > .drawer-foot {
+  position: sticky; bottom: -1.25rem; z-index: 2; margin: 0 -1.5rem -1.25rem; padding: 0.8rem 1.5rem 1.25rem;
+  background: var(--bg); box-shadow: 0 -14px 24px -14px rgba(43, 29, 22, 0.35);
+}

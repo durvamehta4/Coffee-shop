@@ -1745,3 +1745,16 @@ body:has(.me-panel:not([hidden])) .toast { opacity: 0; pointer-events: none; }
 .g-tile:hover figcaption, .g-tile:focus-within figcaption { transform: none; }
 .g-tile figcaption span { opacity: 0.8; font-size: 0.78rem; }
 @media (max-width: 700px) { .gallery { grid-template-columns: 1fr 1fr; } .g-tile figcaption { transform: none; } }
+
+/* ---------- Hubs ---------- */
+.hub { padding-top: 5rem; }
+.hub-head { text-align: center; }
+.hub-head h2 { margin-bottom: 1.25rem; }
+.hub-tabs { position: sticky; top: 76px; z-index: 5; display: inline-flex; gap: 0.25rem; padding: 0.3rem; border-radius: 999px; background: var(--surface); box-shadow: var(--shadow); max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+body.has-strip .hub-tabs { top: 112px; }
+.hub-tabs button { border: 0; background: transparent; color: var(--text); font: inherit; font-weight: 600; font-size: 0.92rem; padding: 0.6rem 1.1rem; border-radius: 999px; cursor: pointer; white-space: nowrap; }
+.hub-tabs button[aria-selected="true"] { background: var(--ink); color: var(--ink-contrast); }
+.hub-panel[hidden] { display: none !important; }
+.hub-panel { animation: fade 0.35s ease; }
+.hub-panel > .container > .eyebrow.center, .hub-panel > .container > .section-title { display: none; }
+@media (max-width: 600px) { .hub-tabs { display: flex; } .hub-tabs button { padding: 0.5rem 0.85rem; font-size: 0.85rem; } }

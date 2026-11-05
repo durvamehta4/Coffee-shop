@@ -328,14 +328,29 @@ body { transition: background 0.3s, color 0.3s; }
 .form-status.error { color: #a54a3a; }
 
 /* ---------- Footer ---------- */
-.site-footer {
-  background: var(--espresso);
-  color: var(--cream);
-  text-align: center;
-  padding: 2rem 0;
-  font-size: 0.9rem;
+.site-footer { background: var(--espresso); color: var(--cream); padding: 4rem 0 0; font-size: 0.92rem; }
+.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 2.5rem; padding-bottom: 3rem; }
+.footer-brand p { opacity: 0.75; max-width: 300px; }
+.footer-col { display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-col h4 { font-family: "Inter", sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--caramel); margin: 0 0 0.4rem; }
+.footer-col a, .footer-col p { color: var(--cream); opacity: 0.8; text-decoration: none; margin: 0; }
+.footer-col a:hover { opacity: 1; color: var(--caramel); }
+.footer-today { font-weight: 600; opacity: 1 !important; }
+.socials { display: flex; gap: 0.5rem; margin-top: 1rem; }
+.socials a {
+  width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%;
+  border: 1px solid rgba(247, 241, 232, 0.25); color: var(--cream); text-decoration: none; font-size: 0.72rem; font-weight: 700;
+  transition: background 0.2s, border-color 0.2s;
 }
-.site-footer p { margin: 0; opacity: 0.8; }
+.socials a:hover { background: var(--caramel); border-color: var(--caramel); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; padding: 1.25rem 0; border-top: 1px solid rgba(247, 241, 232, 0.12); }
+.footer-bottom p { margin: 0; opacity: 0.6; }
+.to-top { color: var(--cream); opacity: 0.75; text-decoration: none; }
+.to-top:hover { opacity: 1; }
+@media (max-width: 800px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .footer-brand { grid-column: 1 / -1; }
+}
 
 /* ---------- Responsive ---------- */
 @media (max-width: 800px) {
@@ -598,7 +613,7 @@ body { transition: background 0.3s, color 0.3s; }
   .order-bar { left: 0.75rem; right: 0.75rem; bottom: 0.75rem; justify-content: space-between; }
   .ob-label { flex: 1; text-align: left; }
 }
-body:has(.order-bar.show) .site-footer { padding-bottom: 6rem; }
+body:has(.order-bar.show) .footer-bottom { padding-bottom: 6rem; }
 
 /* ---------- Quiz ---------- */
 .quiz-section { background: var(--feature-dark); color: var(--cream); }

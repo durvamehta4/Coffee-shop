@@ -78,3 +78,12 @@ document.getElementById("year").textContent = new Date().getFullYear();
   el.innerHTML = [1, 2, 3, 4, 5, 6, 0].map((d) =>
     `<li class="${d === today ? "today" : ""}"><span>${names[d]}${d === today ? " <em>Today</em>" : ""}</span><span>${t(HOURS[d][0])} – ${t(HOURS[d][1])}</span></li>`).join("");
 })();
+
+// ---------- Footer: today's hours ----------
+(function () {
+  const el = document.getElementById("footer-today");
+  if (!el) return;
+  const [o, c] = HOURS[new Date().getDay()];
+  const t = (h) => (h > 12 ? h - 12 + " pm" : h + " am");
+  el.textContent = `Today: ${t(o)} – ${t(c)}`;
+})();

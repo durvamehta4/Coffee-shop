@@ -1502,3 +1502,5 @@ p { text-wrap: pretty; }
 .invite div { display: grid; }
 .invite small { color: var(--muted); }
 .invite .btn-ghost { border-color: var(--caramel); color: var(--caramel); }
+.cart-undo { display: flex; justify-content: space-between; align-items: center; padding: 0.7rem 0.9rem; margin-top: 0.4rem; border-radius: 12px; background: rgba(var(--line-rgb), 0.06); font-size: 0.9rem; animation: fade 0.25s ease; list-style: none; }
+.cart-undo .link-btn { color: var(--caramel); font-weight: 700; }

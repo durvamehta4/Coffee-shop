@@ -18,7 +18,11 @@
       const l = cart.lines.find((x) => x.key === key);
       if (!l) return;
       l.qty = qty;
-      if (l.qty <= 0) cart.lines = cart.lines.filter((x) => x !== l);
+      if (l.qty <= 0) {
+        const idx = cart.lines.indexOf(l);
+        cart.lines = cart.lines.filter((x) => x !== l);
+        cart.lastRemoved = { line: { ...l, qty: 1 }, idx, at: Date.now() };
+      }
       cart.changed();
     },
     clear() { cart.lines = []; cart.changed(); },
@@ -62,7 +66,11 @@
   function render() {
     const n = cart.count();
     badges.forEach((b) => { b.textContent = n; b.hidden = n === 0; });
-    if (!cart.lines.length) {
+    const lr = cart.lastRemoved && Date.now() - cart.lastRemoved.at < 6000 ? cart.lastRemoved : null;
+    const undoRow = lr ? `<li class="cart-undo"><span>Removed <strong>${lr.line.name}</strong></span><button class="link-btn" data-undo>Undo</button></li>` : "";
+    if (!cart.lines.length && lr) {
+      linesEl.innerHTML = undoRow;
+    } else if (!cart.lines.length) {
       linesEl.innerHTML = `<div class="cart-empty"><p>Your order is empty.</p><a href="#menu" class="btn btn-small" onclick="closeCart()">Browse the menu</a></div>`;
     } else {
       linesEl.innerHTML = cart.lines.map((l) => `
@@ -73,7 +81,7 @@
             <span>${l.qty}</span>
             <button data-inc="${encodeURIComponent(l.key)}" aria-label="Add one ${l.name}">+</button>
           </div>
-        </li>`).join("");
+        </li>`).join("") + undoRow;
     }
     const ds = cart.lines.length ? cart.discounts() : [];
     document.getElementById("cart-adjust").innerHTML = ds.length
@@ -137,6 +145,10 @@
       cart.setQty(key, l.qty + (inc ? 1 : -1));
     }
     if (e.target.closest("[data-open-cart]")) { e.preventDefault(); openCart(); }
+    if (e.target.closest("[data-undo]") && cart.lastRemoved) {
+      const { line, idx } = cart.lastRemoved; cart.lastRemoved = null;
+      cart.lines.splice(Math.min(idx, cart.lines.length), 0, line); cart.changed();
+    }
   });
   overlay.addEventListener("click", closeCart);
   drawer.querySelector(".drawer-close").addEventListener("click", closeCart);
@@ -170,6 +182,15 @@
     cart.clear();
     showStep("done");
     document.dispatchEvent(new CustomEvent("order:placed", { detail: order }));
+  });
+
+  // Undo row expires on its own.
+  document.addEventListener("cart:changed", () => { if (cart.lastRemoved) setTimeout(render, 6100); });
+  // Cross-tab sync
+  addEventListener("storage", (e) => {
+    if (e.key !== KEY) return;
+    cart.lines = load(); render();
+    document.dispatchEvent(new CustomEvent("cart:changed", { detail: { synced: true } }));
   });
 
   render();

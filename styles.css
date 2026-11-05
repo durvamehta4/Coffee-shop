@@ -1783,3 +1783,4 @@ body.has-strip .menu-tabs { top: 108px; }
 .menu-tabs.stuck { background: color-mix(in srgb, var(--bg-alt) 88%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 10px 24px rgba(43, 29, 22, 0.12); padding-inline: 0.5rem; width: fit-content; margin-inline: auto; }
 .menu-tabs.stuck .tab { padding: 0.45rem 1rem; font-size: 0.9rem; }
 @media (max-width: 800px) { .menu-tabs { top: 68px; } body.has-strip .menu-tabs { top: 112px; } .menu-tabs.stuck { width: auto; border-radius: 0; margin-inline: -1rem; } }
+.eyebrow.greet { text-transform: none; letter-spacing: 0.02em; font-size: 1rem; }

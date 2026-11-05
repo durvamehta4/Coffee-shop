@@ -92,6 +92,18 @@
       <div class="container">
         <h2 class="section-title">Menu</h2>
         <p class="section-sub">Order ahead and skip the line — pay when you pick up.</p>
+        <div class="menu-tools">
+          <label class="menu-search">
+            <span aria-hidden="true">🔍</span>
+            <input type="search" id="menu-q" placeholder="Search drinks & food…" aria-label="Search the menu" />
+          </label>
+          <div class="filter-chips" role="group" aria-label="Filters">
+            <button class="fchip" data-f="vegan" aria-pressed="false">🌱 Vegan</button>
+            <button class="fchip" data-f="under5" aria-pressed="false">Under $5</button>
+            <button class="fchip" data-f="iced" aria-pressed="false">🧊 Iced-friendly</button>
+            <button class="fchip" data-f="nocaf" aria-pressed="false">🌙 Caffeine-free</button>
+          </div>
+        </div>
         <div class="menu-tabs" role="tablist">
           <button class="tab active" role="tab" aria-selected="true" data-tab="coffee">Coffee</button>
           <button class="tab" role="tab" aria-selected="false" data-tab="tea">Tea &amp; More</button>
@@ -103,6 +115,10 @@
         <div class="menu-panel" id="tea" role="tabpanel"></div>
 
         <div class="menu-panel" id="food" role="tabpanel"></div>
+        <div class="menu-results" id="menu-results" hidden>
+          <p class="results-meta" aria-live="polite"><span id="results-count"></span> <button class="link-btn" id="clear-filters">Clear all</button></p>
+          <div class="menu-panel active" id="results-grid"></div>
+        </div>
       </div>
     </section>
 
@@ -224,5 +240,6 @@
   <script src="js/quiz.js"></script>
   <script src="js/loyalty.js"></script>
   <script src="js/theme.js"></script>
+  <script src="js/filters.js"></script>
 </body>
 </html>

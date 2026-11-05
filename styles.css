@@ -16,8 +16,8 @@
   --line-rgb: 74, 50, 38;
   --ink: #4a3226;          /* outlined controls */
   --ink-contrast: #f7f1e8; /* text on --ink */
-  --thumb-a: var(--thumb-a);
-  --thumb-b: var(--thumb-b);
+  --thumb-a: #f6e7d4;
+  --thumb-b: #ecd6bb;
   --deal-bg: linear-gradient(135deg, #fbe9d5, #f6dcc0);
   --feature-dark: #2b1d16;
   --cup-line: #4a3226;
@@ -695,3 +695,30 @@ body:has(.order-bar.show) .site-footer { padding-bottom: 6rem; }
 .nav-toggle { order: 5; }
 @media (max-width: 800px) { .cart-icon-mobile { margin-left: 0; } }
 .cup-line { stroke: var(--cup-line); }
+
+/* ---------- Menu search & filters ---------- */
+.menu-tools { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.75rem; margin: 1.5rem 0 0.5rem; }
+.menu-search {
+  display: flex; align-items: center; gap: 0.5rem; flex: 0 1 320px;
+  padding: 0 1rem; border-radius: 999px; background: var(--surface);
+  border: 1px solid rgba(var(--line-rgb), 0.2); box-shadow: var(--shadow);
+}
+.menu-search:focus-within { outline: 2px solid var(--caramel); }
+.menu-search input { flex: 1; min-width: 0; border: 0; background: transparent; padding: 0.75rem 0; font: inherit; color: var(--text); outline: none; }
+.filter-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem; }
+.fchip {
+  padding: 0.5rem 0.9rem; border-radius: 999px; font: inherit; font-size: 0.88rem; font-weight: 500;
+  border: 1.5px solid rgba(var(--line-rgb), 0.2); background: var(--surface); color: var(--text); cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.fchip:hover { border-color: var(--caramel); }
+.fchip[aria-pressed="true"] { background: var(--caramel); border-color: var(--caramel); color: #fff; }
+.menu-tabs[hidden], .menu-results[hidden] { display: none; }
+.results-meta { text-align: center; color: var(--muted); margin: 1.25rem 0 1.5rem; }
+.results-meta .link-btn { color: var(--caramel); font-weight: 600; text-decoration: underline; }
+.no-results { grid-column: 1 / -1; text-align: center; padding: 2rem; }
+@media (max-width: 600px) {
+  .menu-search { flex-basis: 100%; }
+  .filter-chips { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; width: 100%; padding-bottom: 0.25rem; scrollbar-width: none; }
+  .fchip { white-space: nowrap; }
+}

@@ -13,14 +13,14 @@ window.MENU = [
   { cat: "tea", items: [
     { id: "chai", name: "Chai Latte", desc: "House-spiced chai with steamed milk.", price: 4.75, tags: [], hot: true },
     { id: "matcha", name: "Matcha Latte", desc: "Ceremonial-grade matcha, lightly sweetened.", price: 5.0, tags: [], hot: true },
-    { id: "tea", name: "Loose-Leaf Tea", desc: "Earl Grey, green, chamomile or peppermint.", price: 3.25, tags: ["vegan"], hot: true },
-    { id: "cocoa", name: "Hot Chocolate", desc: "Rich dark chocolate, topped with whipped cream.", price: 4.0, tags: [], hot: true },
+    { id: "tea", nocaf: true, name: "Loose-Leaf Tea", desc: "Earl Grey, green, chamomile or peppermint.", price: 3.25, tags: ["vegan", "decaf-option"], hot: true },
+    { id: "cocoa", nocaf: true, name: "Hot Chocolate", desc: "Rich dark chocolate, topped with whipped cream.", price: 4.0, tags: ["nocaf"], hot: true },
   ]},
   { cat: "food", items: [
-    { id: "croissant", name: "Butter Croissant", desc: "Flaky, golden, baked this morning.", price: 3.5, tags: [], food: true },
-    { id: "muffin", name: "Blueberry Muffin", desc: "Bursting with berries and a crumb top.", price: 3.25, tags: [], food: true },
-    { id: "avotoast", name: "Avocado Toast", desc: "Sourdough, smashed avocado, chili flakes.", price: 8.5, tags: ["vegan"], food: true },
-    { id: "sandwich", name: "Breakfast Sandwich", desc: "Egg, cheddar and bacon or spinach on a brioche bun.", price: 7.75, tags: [], food: true },
+    { id: "croissant", nocaf: true, name: "Butter Croissant", desc: "Flaky, golden, baked this morning.", price: 3.5, tags: [], food: true },
+    { id: "muffin", nocaf: true, name: "Blueberry Muffin", desc: "Bursting with berries and a crumb top.", price: 3.25, tags: [], food: true },
+    { id: "avotoast", nocaf: true, name: "Avocado Toast", desc: "Sourdough, smashed avocado, chili flakes.", price: 8.5, tags: ["vegan"], food: true },
+    { id: "sandwich", nocaf: true, name: "Breakfast Sandwich", desc: "Egg, cheddar and bacon or spinach on a brioche bun.", price: 7.75, tags: [], food: true },
   ]},
 ];
 window.MENU_INDEX = Object.fromEntries(window.MENU.flatMap((c) => c.items.map((i) => [i.id, { ...i, cat: c.cat }])));

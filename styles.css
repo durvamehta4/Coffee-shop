@@ -1655,3 +1655,8 @@ body:has(.me-panel:not([hidden])) .toast { opacity: 0; pointer-events: none; }
 @keyframes numflashLight { 30% { color: #ffd9b0; } }
 .lang-btn { font: 700 0.75rem Inter, sans-serif; letter-spacing: 0.04em; order: 3; }
 @media (max-width: 800px) { .nav .lang-btn { margin-left: auto; } .nav .lang-btn + .theme-toggle, .nav .theme-toggle#theme-toggle { margin-left: 0; } }
+.arrival { margin-top: -0.4rem; }
+.arrival-btn { color: var(--caramel); font-weight: 600; font-size: 0.88rem; padding: 0; }
+.arrival-out { margin: 0.3rem 0 0; font-size: 0.82rem; color: var(--muted); }
+.arrival-out:empty { display: none; }
+.arrival-out b { color: var(--text); }

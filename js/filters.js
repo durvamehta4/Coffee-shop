@@ -21,7 +21,7 @@
     tabsEl.hidden = !!on;
     panels.forEach((p) => (p.style.display = on ? "none" : ""));
     if (!on) return;
-    const all = MENU.flatMap((c) => c.items);
+    const all = MENU.flatMap((c) => c.items).filter((i) => !i.hidden);
     const hits = all.filter((i) =>
       [...active].every((f) => TESTS[f](i)) &&
       (!term || (i.name + " " + i.desc + " " + i.tags.join(" ")).toLowerCase().includes(term)));

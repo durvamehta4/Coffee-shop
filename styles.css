@@ -901,3 +901,49 @@ body:has(.hero) .site-header { position: fixed; left: 0; right: 0; }
 .week em { font-style: normal; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; background: var(--caramel); color: #fff; padding: 0.1rem 0.45rem; border-radius: 999px; margin-left: 0.4rem; vertical-align: 2px; }
 .slot-note { margin: 0; padding: 0.75rem 0.9rem; border-radius: 12px; background: var(--deal-bg); font-size: 0.88rem; }
 .slot-note[hidden] { display: none; }
+
+/* ---------- Gift cards ---------- */
+.gifts-section { background: var(--bg-alt); }
+.gifts { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
+.gift-form { display: grid; gap: 0.9rem; margin-top: 1.25rem; }
+.gift-form fieldset { border: 0; padding: 0; margin: 0; }
+.gift-form legend { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; }
+.gift-designs { display: flex; gap: 0.6rem; }
+.gift-designs input { position: absolute; opacity: 0; }
+.sw { display: block; width: 46px; height: 46px; border-radius: 50%; cursor: pointer; border: 3px solid transparent; box-shadow: 0 0 0 1px rgba(var(--line-rgb), 0.2); }
+.gift-designs input:checked + .sw { border-color: var(--bg-alt); box-shadow: 0 0 0 3px var(--caramel); }
+.gift-designs input:focus-visible + .sw { outline: 2px solid var(--caramel); outline-offset: 4px; }
+.sw.ember, .gift-card.ember { background: linear-gradient(135deg, #c8834a, #7a3f1c); }
+.sw.latte, .gift-card.latte { background: linear-gradient(135deg, #f3e2cb, #d2b48c); }
+.sw.pine, .gift-card.pine { background: linear-gradient(135deg, #3f6b4f, #1d3a2b); }
+.sw.night, .gift-card.night { background: linear-gradient(135deg, #2c3550, #120f1c); }
+.gift-amounts { align-items: center; }
+.gift-custom { width: 90px; padding: 0.4rem 0.7rem; border-radius: 999px; border: 1.5px solid var(--caramel); background: var(--surface); color: var(--text); font: inherit; }
+.gift-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.gift-form .btn { justify-self: start; }
+.gift-stage { perspective: 900px; display: grid; place-items: center; padding: 2rem 0; }
+.gift-card {
+  position: relative; width: min(420px, 100%); aspect-ratio: 1.586; border-radius: 22px; padding: 1.6rem;
+  color: #fff; display: flex; flex-direction: column; justify-content: space-between;
+  box-shadow: 0 40px 70px -20px rgba(43, 29, 22, 0.55); transition: transform 0.15s ease-out, background 0.4s;
+  transform-style: preserve-3d; overflow: hidden;
+}
+.gift-card::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle at var(--gx, 30%) var(--gy, 20%), rgba(255, 255, 255, 0.35), transparent 45%);
+}
+.gift-card.latte { color: #3b2416; }
+.gift-card.sent { animation: sent 0.7s ease; }
+@keyframes sent { 40% { transform: translateY(-14px) rotate(-3deg) scale(1.03); } }
+.gc-top { display: flex; justify-content: space-between; align-items: center; }
+.gc-logo { font-family: "Playfair Display", serif; font-weight: 700; font-size: 1.2rem; }
+.gc-logo i { font-style: normal; opacity: 0.7; }
+.gc-chip { width: 42px; height: 32px; border-radius: 7px; background: linear-gradient(135deg, #f2d48f, #b8913f); opacity: 0.9; }
+.gc-amount { font-family: "Playfair Display", serif; font-size: clamp(2.6rem, 6vw, 3.6rem); font-weight: 700; line-height: 1; }
+.gc-msg { margin: 0; font-style: italic; opacity: 0.9; min-height: 1.5em; overflow-wrap: anywhere; }
+.gc-bottom { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.8rem; opacity: 0.9; }
+.gc-bottom b { display: block; font-size: 1rem; }
+@media (max-width: 800px) {
+  .gifts { grid-template-columns: 1fr; gap: 1rem; }
+  .gift-stage { order: -1; padding: 0; }
+}

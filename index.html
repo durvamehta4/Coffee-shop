@@ -30,6 +30,7 @@
         <a href="#menu">Menu</a>
         <a href="#beans">Beans</a>
         <a href="#rewards">Rewards</a>
+        <a href="#gifts">Gifts</a>
         <a href="#visit">Visit</a>
         <a href="#contact">Contact</a>
         <a href="#" class="btn btn-small cart-btn" data-open-cart>Order <span class="badge" data-cart-count hidden>0</span></a>
@@ -151,6 +152,45 @@
     <!-- Rewards -->
     <section id="rewards" class="section">
       <div class="container club" id="club"></div>
+    </section>
+
+    <!-- Gift cards -->
+    <section id="gifts" class="section gifts-section">
+      <div class="container gifts">
+        <div class="gift-form-wrap">
+          <p class="eyebrow">The easiest gift on the list</p>
+          <h2>Give someone a better morning.</h2>
+          <form class="gift-form" id="gift-form">
+            <fieldset><legend>Design</legend><div class="gift-designs">
+              <label><input type="radio" name="design" value="ember" checked /><span class="sw ember"></span></label>
+              <label><input type="radio" name="design" value="latte" /><span class="sw latte"></span></label>
+              <label><input type="radio" name="design" value="pine" /><span class="sw pine"></span></label>
+              <label><input type="radio" name="design" value="night" /><span class="sw night"></span></label>
+            </div></fieldset>
+            <fieldset><legend>Amount</legend><div class="chips gift-amounts">
+              <label class="chip"><input type="radio" name="amt" value="15" /><span>$15</span></label>
+              <label class="chip"><input type="radio" name="amt" value="25" checked /><span>$25</span></label>
+              <label class="chip"><input type="radio" name="amt" value="50" /><span>$50</span></label>
+              <label class="chip"><input type="radio" name="amt" value="custom" /><span>Custom</span></label>
+              <input type="number" name="custom" min="5" max="200" step="1" placeholder="$" class="gift-custom" aria-label="Custom amount" hidden />
+            </div></fieldset>
+            <div class="gift-row">
+              <div class="field"><label for="g-to">To</label><input id="g-to" name="to" maxlength="24" placeholder="Their name" /></div>
+              <div class="field"><label for="g-from">From</label><input id="g-from" name="from" maxlength="24" placeholder="Your name" /></div>
+            </div>
+            <div class="field"><label for="g-msg">Message</label><input id="g-msg" name="msg" maxlength="70" placeholder="Coffee's on me ☕" /></div>
+            <button class="btn" type="submit">Add gift card · <span id="gift-price">$25.00</span></button>
+          </form>
+        </div>
+        <div class="gift-stage">
+          <div class="gift-card ember" id="gift-card">
+            <div class="gc-top"><span class="gc-logo">Ember <i>&amp;</i> Bean</span><span class="gc-chip"></span></div>
+            <div class="gc-amount" id="gc-amount">$25</div>
+            <p class="gc-msg" id="gc-msg">Coffee's on me ☕</p>
+            <div class="gc-bottom"><span>To <b id="gc-to">Someone great</b></span><span>From <b id="gc-from">You</b></span></div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Visit -->
@@ -299,5 +339,6 @@
   <script src="js/tracker.js"></script>
   <script src="js/reorder.js"></script>
   <script src="js/beans.js"></script>
+  <script src="js/gifts.js"></script>
 </body>
 </html>

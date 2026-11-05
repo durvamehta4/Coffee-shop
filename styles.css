@@ -1477,3 +1477,7 @@ p { text-wrap: pretty; }
 .combo input:checked + .fw-check::after { content: "✓"; color: #fff; font-size: 0.8rem; font-weight: 700; }
 .combo s { color: var(--muted); }
 .combo:has(input:checked) { border-color: #3d7a46; background: rgba(61, 122, 70, 0.07); }
+.qo-status.lastcall { background: #a54a3a; }
+.qo-status.lastcall .dot { background: #ffd2c4; animation: pulse 1s infinite; }
+.qo-rush { margin: 0.6rem 0 0; font-size: 0.82rem; color: var(--cream); opacity: 0.9; }
+.qo-rush b { color: #f0c27b; }

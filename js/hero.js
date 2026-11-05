@@ -33,7 +33,21 @@
       const left = Math.round((c - t) * 60);
       const h = Math.floor(left / 60), m = left % 60;
       el.className = "qo-status open";
-      txt.textContent = `Open · ready in ~10 min · closes in ${h ? h + "h " : ""}${m}m`;
+      // Earliest real pickup slot (same rule as checkout: now + 10 min, rounded up to 15).
+      const eta = new Date(now.getTime() + 10 * 60000); eta.setMinutes(Math.ceil(eta.getMinutes() / 15) * 15, 0, 0);
+      const etaTxt = eta.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+      const lastOrder = Math.round((c - t) * 60) - 25; // last slot is 15 min before close, needs ~10 min lead
+      txt.textContent = lastOrder <= 45 && lastOrder > 0
+        ? `Last call · order in the next ${lastOrder} min for pickup today`
+        : `Open · ready by ${etaTxt} · closes in ${h ? h + "h " : ""}${m}m`;
+      el.classList.toggle("lastcall", lastOrder <= 45 && lastOrder > 0);
+      const hm = now.getHours() + now.getMinutes() / 60;
+      const rush = (hm >= 7.5 && hm < 9.5) ? "Morning rush" : (hm >= 12 && hm < 13) ? "Lunch rush" : null;
+      let r = document.getElementById("qo-rush");
+      if (rush) {
+        if (!r) { r = document.createElement("p"); r.id = "qo-rush"; r.className = "qo-rush"; el.after(r); }
+        r.innerHTML = `🏃 <b>${rush}</b>: the line is usually longest now. Order ahead and walk straight to the shelf.`;
+      } else if (r) r.remove();
     } else {
       const n = nextOpening(now);
       el.className = "qo-status closed";

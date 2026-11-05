@@ -4,7 +4,7 @@
   root.className = "palette-wrap"; root.hidden = true;
   root.innerHTML = `
     <div class="palette" role="dialog" aria-modal="true" aria-label="Quick order">
-      <div class="pal-input"><span aria-hidden="true">🔍</span><input id="pal-q" placeholder="Type a drink, food or action…" autocomplete="off" role="combobox" aria-expanded="true" aria-controls="pal-list" /><kbd>esc</kbd></div>
+      <div class="pal-input"><span aria-hidden="true">🔍</span><input id="pal-q" placeholder="Type a drink, food or action…" autocomplete="off" role="combobox" aria-expanded="true" aria-controls="pal-list" /><button class="pal-mic" data-voice aria-label="Order by voice">🎙</button><kbd>esc</kbd></div>
       <ul class="pal-list" id="pal-list" role="listbox"></ul>
       <p class="pal-foot"><kbd>↑</kbd><kbd>↓</kbd> to move · <kbd>↵</kbd> to add · works anywhere with <kbd>/</kbd></p>
     </div>`;

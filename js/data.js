@@ -38,6 +38,18 @@ window.MENU = [
     { id: "giftcard", name: "Gift card", desc: "A handwritten gift card, ready with your pickup.", price: 25, tags: [], food: true, retail: true, hidden: true },
   ]},
 ];
+// Food details: ingredients, allergens, pairings
+const FOOD_INFO = {
+  croissant: { ing: "French butter, flour, milk, sugar, yeast, sea salt", all: ["Gluten", "Dairy", "Egg"], pair: ["flatwhite", "cappuccino"], cal: 340 },
+  muffin: { ing: "Wild blueberries, flour, butter, eggs, cane sugar, oat crumble", all: ["Gluten", "Dairy", "Egg"], pair: ["pourover", "latte"], cal: 410 },
+  avotoast: { ing: "Sourdough, Hass avocado, lemon, chili flakes, olive oil, flaky salt", all: ["Gluten"], pair: ["americano", "matcha"], cal: 380 },
+  sandwich: { ing: "Free-range egg, aged cheddar, bacon or spinach, brioche bun, garlic aioli", all: ["Gluten", "Dairy", "Egg"], pair: ["latte", "coldbrew"], cal: 520 },
+};
+Object.entries(FOOD_INFO).forEach(([id, v]) => {
+  const item = window.MENU.flatMap((c) => c.items).find((i) => i.id === id);
+  if (item) item.info = v;
+});
+
 // Merchandising badges
 const BADGES = { latte: "Bestseller", flatwhite: "Barista pick", coldbrew: "Bestseller", matcha: "New", croissant: "Bestseller", pourover: "Barista pick", avotoast: "New" };
 window.MENU.forEach((c) => c.items.forEach((i) => { if (BADGES[i.id]) i.badge = BADGES[i.id]; if (i.seasonal) i.badge = "Seasonal"; }));

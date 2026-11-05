@@ -1672,3 +1672,13 @@ body:has(.me-panel:not([hidden])) .toast { opacity: 0; pointer-events: none; }
 }
 .quiz, .club-copy { --caramel: var(--caramel-surface); --on-caramel: var(--on-caramel-surface); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tab-winter { border-color: #8fb3c9; color: #8fb3c9; } }
+
+/* ---------- Freshness ---------- */
+.today-pour { display: flex; align-items: center; gap: 1rem; max-width: 640px; margin: 1.5rem auto 0; padding: 0.8rem 0.9rem 0.8rem 1rem; border-radius: 18px; background: var(--surface); box-shadow: var(--shadow); border: 1px dashed rgba(var(--line-rgb), 0.2); }
+.tp-flag { font-size: 2rem; }
+.today-pour div { display: grid; flex: 1; min-width: 0; line-height: 1.35; }
+.today-pour small { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--caramel); font-weight: 700; }
+.today-pour strong { font-family: "Playfair Display", serif; font-size: 1.15rem; }
+.today-pour span { color: var(--muted); font-size: 0.85rem; }
+.roast-date { display: inline-block; font-size: 0.75rem; font-weight: 600; color: var(--ok); }
+@media (max-width: 520px) { .today-pour { flex-wrap: wrap; } .today-pour .btn { width: 100%; text-align: center; } }

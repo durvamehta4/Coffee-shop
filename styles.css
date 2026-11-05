@@ -1635,3 +1635,17 @@ html.ulinks a:not(.btn) { text-decoration: underline !important; }
 @media (max-width: 800px) { .prefs { bottom: 5.5rem; } .footer-tools { flex-wrap: wrap; } }
 .faq > *, .ask { min-width: 0; }
 @media (max-width: 480px) { .ask-box { flex-wrap: wrap; border-radius: 20px; padding: 0.5rem 0.75rem; } .ask-box .btn { margin-left: auto; } }
+
+/* ---------- Subscriptions ---------- */
+.me-subs { display: grid; gap: 0.5rem; }
+.sub { background: var(--surface); border-radius: 14px; padding: 0.8rem 0.9rem; display: grid; gap: 0.35rem; border-left: 4px solid var(--caramel); }
+.sub.paused { border-left-color: rgba(var(--line-rgb), 0.3); opacity: 0.8; }
+.sub-top { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+.sub-pill { font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 999px; background: rgba(200, 131, 74, 0.15); color: var(--caramel); white-space: nowrap; }
+.sub small { color: var(--muted); }
+.sub-grind { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; }
+.sub-grind select { flex: 1; padding: 0.3rem 0.5rem; border-radius: 8px; border: 1px solid rgba(var(--line-rgb), 0.2); background: var(--bg); color: var(--text); font: inherit; }
+.sub-acts { display: flex; gap: 0.9rem; font-size: 0.82rem; }
+.sub-acts .link-btn { padding: 0; color: var(--text); font-weight: 600; }
+.sub-acts .danger { color: #a54a3a; margin-left: auto; }
+body:has(.me-panel:not([hidden])) .toast { opacity: 0; pointer-events: none; }

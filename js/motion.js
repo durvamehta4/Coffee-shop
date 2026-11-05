@@ -5,8 +5,10 @@
   const bar = document.createElement("div");
   bar.className = "scroll-progress"; header.appendChild(bar);
 
+  const heroBg = document.querySelector(".hero-bg-wrap");
   function onScroll() {
     const y = scrollY, h = document.documentElement.scrollHeight - innerHeight;
+    if (heroBg && y < innerHeight * 1.2 && !reduce) heroBg.style.transform = `translateY(${y * 0.3}px)`;
     header.classList.toggle("scrolled", y > 40);
     bar.style.transform = `scaleX(${h > 0 ? y / h : 0})`;
   }

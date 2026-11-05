@@ -110,6 +110,15 @@
   <main id="main">
     <!-- Hero -->
     <section id="home" class="hero">
+      <div class="hero-bg-wrap" aria-hidden="true"><div class="hero-bg"></div></div>
+      <svg class="hero-steam" viewBox="0 0 400 300" aria-hidden="true" preserveAspectRatio="xMidYMax meet">
+        <defs><filter id="steamblur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter></defs>
+        <g filter="url(#steamblur)" fill="none" stroke="#fff" stroke-linecap="round">
+          <path class="wisp w1" d="M150 300 C120 250 190 220 160 170 S130 90 170 40" stroke-width="18"/>
+          <path class="wisp w2" d="M210 300 C240 250 170 210 205 160 S240 90 200 30" stroke-width="14"/>
+          <path class="wisp w3" d="M260 300 C230 240 300 220 270 170 S250 100 280 50" stroke-width="12"/>
+        </g>
+      </svg>
       <div class="container hero-grid">
         <div class="hero-content">
           <p class="eyebrow">Small-batch · Roasted in house</p>

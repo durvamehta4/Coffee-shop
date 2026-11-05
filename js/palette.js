@@ -18,6 +18,7 @@
     { label: "Toggle dark mode", icon: "🌙", run: () => document.getElementById("theme-toggle").click() },
     { label: "Find us · map & hours", icon: "📍", run: () => document.getElementById("visit").scrollIntoView({ behavior: "smooth" }) },
     { label: "Take the coffee quiz", icon: "✨", run: () => document.getElementById("find").scrollIntoView({ behavior: "smooth" }) },
+    { label: "Surprise me with a drink", icon: "🎲", run: () => window.surpriseMe && surpriseMe() },
     { label: "Send a gift card", icon: "🎁", run: () => document.getElementById("gifts").scrollIntoView({ behavior: "smooth" }) },
     { label: "Plan catering", icon: "📦", run: () => document.getElementById("contact").scrollIntoView({ behavior: "smooth" }) },
   ];

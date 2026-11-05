@@ -1784,3 +1784,15 @@ body.has-strip .menu-tabs { top: 108px; }
 .menu-tabs.stuck .tab { padding: 0.45rem 1rem; font-size: 0.9rem; }
 @media (max-width: 800px) { .menu-tabs { top: 68px; } body.has-strip .menu-tabs { top: 112px; } .menu-tabs.stuck { width: auto; border-radius: 0; margin-inline: -1rem; } }
 .eyebrow.greet { text-transform: none; letter-spacing: 0.02em; font-size: 1rem; }
+
+/* ---------- Surprise reel ---------- */
+.surprise-btn { border-style: dashed; border-color: var(--caramel); }
+.reel-wrap { position: fixed; inset: 0; z-index: 85; display: grid; place-items: center; background: rgba(20, 12, 8, 0.55); backdrop-filter: blur(4px); }
+.reel-wrap[hidden] { display: none; }
+.reel-box { background: var(--bg); color: var(--text); border-radius: 24px; padding: 1.5rem 2rem; text-align: center; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4); animation: palIn 0.2s ease; }
+.reel { width: 180px; height: 180px; margin: 0.75rem auto; overflow: hidden; border-radius: 20px; background: radial-gradient(circle at 50% 65%, var(--thumb-a), var(--thumb-b)); box-shadow: inset 0 12px 20px -10px rgba(0, 0, 0, 0.25), inset 0 -12px 20px -10px rgba(0, 0, 0, 0.25); }
+.reel-cell { height: 180px; display: grid; place-items: center; }
+.reel-cell svg { height: 150px; width: auto; }
+.reel-name { min-height: 3rem; margin: 0; display: grid; }
+.reel-name strong { font-family: "Playfair Display", serif; font-size: 1.5rem; }
+.reel-name small { color: var(--muted); }

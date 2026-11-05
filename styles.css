@@ -1776,3 +1776,10 @@ body.has-strip .hub-tabs { top: 112px; }
 .rate-next textarea { width: 100%; border-radius: 10px; border: 1px solid rgba(var(--line-rgb), 0.25); background: var(--bg); color: var(--text); font: inherit; padding: 0.5rem; }
 @media (max-width: 800px) { .rate-card { left: 0.75rem; right: 0.75rem; width: auto; bottom: 5.25rem; } }
 .habit { color: var(--caramel); font-weight: 600; font-size: 0.88rem; }
+
+/* ---------- Sticky menu tabs ---------- */
+.menu-tabs { position: sticky; top: 72px; z-index: 6; padding-block: 0.5rem; margin-block: 1rem 2rem; transition: background 0.2s, box-shadow 0.2s, padding 0.2s; border-radius: 999px; }
+body.has-strip .menu-tabs { top: 108px; }
+.menu-tabs.stuck { background: color-mix(in srgb, var(--bg-alt) 88%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 10px 24px rgba(43, 29, 22, 0.12); padding-inline: 0.5rem; width: fit-content; margin-inline: auto; }
+.menu-tabs.stuck .tab { padding: 0.45rem 1rem; font-size: 0.9rem; }
+@media (max-width: 800px) { .menu-tabs { top: 68px; } body.has-strip .menu-tabs { top: 112px; } .menu-tabs.stuck { width: auto; border-radius: 0; margin-inline: -1rem; } }

@@ -1589,3 +1589,12 @@ p { text-wrap: pretty; }
 .gb-buy s { color: var(--muted); font-size: 0.9rem; }
 .gb-buy strong { font-size: 1.3rem; }
 @media (max-width: 900px) { .gift-boxes { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 80%; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0.5rem 0.25rem 1rem; } .gift-box { scroll-snap-align: center; } }
+
+/* ---------- Latte art toy ---------- */
+.art-play { display: grid; grid-template-columns: 1fr 380px; gap: 3rem; align-items: center; margin-top: 4rem; padding: 2rem; border-radius: 28px; background: var(--surface); box-shadow: var(--shadow); }
+.art-copy h3 { font-size: 2rem; margin: 0 0 0.4rem; }
+.art-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.art-actions .btn-ghost { border-color: rgba(var(--line-rgb), 0.25); }
+.art-actions.ready .btn:last-child { animation: bump 0.6s ease 2; }
+.art-canvas { width: 100%; max-width: 360px; aspect-ratio: 1; border-radius: 50%; touch-action: none; cursor: crosshair; justify-self: center; filter: drop-shadow(0 20px 25px rgba(43, 29, 22, 0.25)); }
+@media (max-width: 800px) { .art-play { grid-template-columns: 1fr; padding: 1.25rem; gap: 1.5rem; } .art-canvas { max-width: 300px; } }

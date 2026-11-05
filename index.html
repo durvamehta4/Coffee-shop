@@ -429,6 +429,18 @@
       <div class="field"><label for="cname">Name for the order</label><input id="cname" name="cname" autocomplete="given-name" required /></div>
       <div class="field"><label for="pickup-slot">Pickup time</label><select id="pickup-slot" name="slot"></select></div>
       <p class="slot-note" id="slot-note" hidden></p>
+      <fieldset class="pickup-modes"><legend>How are you picking up?</legend>
+        <label><input type="radio" name="mode" value="counter" checked /><span>🏪<b>Counter</b><small>Grab &amp; go shelf</small></span></label>
+        <label><input type="radio" name="mode" value="curbside" /><span>🚗<b>Curbside</b><small>We bring it out</small></span></label>
+        <label><input type="radio" name="mode" value="window" /><span>🪟<b>Walk-up</b><small>Side window</small></span></label>
+      </fieldset>
+      <div class="field" id="car-field" hidden><label for="car">Your car</label><input id="car" name="car" placeholder="e.g. Blue Subaru, plate ends 42" /></div>
+      <label class="forward byo"><input type="checkbox" id="byo" /><span class="fw-check" aria-hidden="true"></span>
+        <span class="fw-text"><strong>♻️ I'll bring my own cup · −$0.25 per drink</strong><small>Good for the planet, good for your wallet.</small></span></label>
+      <details class="extras-more"><summary>Add a phone number or note</summary>
+        <div class="field"><label for="phone">Text me when it's ready (optional)</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(555) 555-0199" /></div>
+        <div class="field"><label for="note">Note for the barista</label><input id="note" name="note" maxlength="120" placeholder="Extra hot, please!" /></div>
+      </details>
       <p class="muted small">No card needed — pay at the counter when you pick up.</p>
       <div class="drawer-foot">
         <button type="submit" class="btn btn-block">Place order</button>
@@ -440,6 +452,7 @@
       <div class="confirm-cup" aria-hidden="true">☕</div>
       <h3>Order <span id="confirm-no"></span> is in!</h3>
       <p>Thanks, <strong id="confirm-name"></strong>. Your order will be ready at <strong id="confirm-time"></strong>.</p>
+      <p class="confirm-mode" id="confirm-mode"></p>
       <p class="muted">Total due at pickup: <strong id="confirm-total"></strong></p>
       <p class="small muted">Track it live from the card in the corner of the page.</p>
       <button class="btn btn-block" onclick="closeCart()">Done</button>
@@ -489,5 +502,6 @@
   <script src="js/forward.js"></script>
   <script src="js/palette.js"></script>
   <script src="js/voice.js"></script>
+  <script src="js/checkout-extras.js"></script>
 </body>
 </html>

@@ -154,6 +154,14 @@
       name, at: slot.toISOString(), placedAt: new Date().toISOString(), time: slot.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }) + (slot.toDateString() === new Date().toDateString() ? "" : (dayLabel(slot) === "Tomorrow" ? " tomorrow" : " on " + dayLabel(slot))),
       lines: cart.lines.map((l) => ({ ...l })), discounts: cart.discounts(), total: cart.total(),
     };
+    const f = checkoutForm.elements;
+    order.mode = f.mode.value; order.car = f.car.value.trim(); order.phone = f.phone.value.trim(); order.note = f.note.value.trim();
+    const MODE = {
+      counter: "🏪 It'll be on the grab-and-go shelf with your name on it.",
+      curbside: `🚗 Park out front and we'll bring it to your car${order.car ? ` (${order.car})` : ""}.`,
+      window: "🪟 Head to the walk-up window on Bean Ave and say your name.",
+    };
+    document.getElementById("confirm-mode").textContent = MODE[order.mode] + (order.phone ? " We'll text you when it's ready." : "");
     try { localStorage.setItem("eb-last-order", JSON.stringify(order)); } catch {}
     document.getElementById("confirm-no").textContent = order.no;
     document.getElementById("confirm-name").textContent = name;

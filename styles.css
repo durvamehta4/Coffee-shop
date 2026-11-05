@@ -1219,3 +1219,22 @@ kbd { font: 600 0.72rem Inter, sans-serif; padding: 0.15rem 0.4rem; border-radiu
 .vs-heard strong { color: var(--caramel); }
 .vs-actions { display: flex; justify-content: center; gap: 1rem; align-items: center; }
 .voice-sheet .link-btn { color: rgba(247, 241, 232, 0.75); }
+
+/* ---------- Pickup modes ---------- */
+.pickup-modes { border: 0; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; min-width: 0; }
+.pickup-modes legend { font-weight: 500; font-size: 0.95rem; margin-bottom: 0.4rem; }
+.pickup-modes input { position: absolute; opacity: 0; }
+.pickup-modes span {
+  display: grid; justify-items: center; gap: 0.1rem; padding: 0.7rem 0.3rem; border-radius: 12px; cursor: pointer;
+  border: 1.5px solid rgba(var(--line-rgb), 0.2); font-size: 1.3rem; text-align: center; transition: border-color 0.15s, background 0.15s;
+}
+.pickup-modes b { font-size: 0.85rem; }
+.pickup-modes small { font-size: 0.7rem; color: var(--muted); }
+.pickup-modes input:checked + span { border-color: var(--caramel); background: rgba(200, 131, 74, 0.1); }
+.pickup-modes input:focus-visible + span { outline: 3px solid var(--caramel); outline-offset: 2px; }
+#car-field[hidden] { display: none; }
+.byo { border-color: rgba(var(--line-rgb), 0.25); }
+.extras-more summary { cursor: pointer; color: var(--caramel); font-weight: 600; font-size: 0.9rem; }
+.extras-more[open] { display: grid; gap: 0.75rem; }
+.confirm-mode { background: var(--surface); padding: 0.75rem 1rem; border-radius: 12px; box-shadow: var(--shadow); }
+body.no-scroll .toast { opacity: 0; pointer-events: none; }

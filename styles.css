@@ -1429,3 +1429,21 @@ body.no-scroll .toast { opacity: 0; pointer-events: none; }
   .detail-art { min-height: 150px; font-size: 5rem; }
   .detail-body { padding: 1.25rem; }
 }
+
+/* ---------- Tactile polish: grain, waves, typography ---------- */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 200; pointer-events: none; opacity: 0.06; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .13 0 0 0 0 .08 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+:root[data-theme="dark"] body::after { mix-blend-mode: screen; opacity: 0.035; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) body::after { mix-blend-mode: screen; opacity: 0.035; } }
+.quiz-section, .winter-section {
+  --wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40V22C150 2 300 2 450 18S750 38 900 20 1100 4 1200 14V40Z'/%3E%3C/svg%3E");
+  --wave-b: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 40' preserveAspectRatio='none'%3E%3Cpath d='M0 0V18C200 38 350 36 520 22S820 2 980 16 1120 34 1200 26V0Z'/%3E%3C/svg%3E");
+  -webkit-mask: var(--wave) top / 100% 40px no-repeat, linear-gradient(#000 0 0) center / 100% calc(100% - 78px) no-repeat, var(--wave-b) bottom / 100% 40px no-repeat;
+  mask: var(--wave) top / 100% 40px no-repeat, linear-gradient(#000 0 0) center / 100% calc(100% - 78px) no-repeat, var(--wave-b) bottom / 100% 40px no-repeat;
+  padding-block: 6.5rem; margin-block: -1px;
+}
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+::selection { background: var(--caramel); color: #fff; }

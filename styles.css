@@ -1711,3 +1711,15 @@ body:has(.me-panel:not([hidden])) .toast { opacity: 0; pointer-events: none; }
 .send-status.demo span { display: block; font-size: 0.78rem; margin-top: 0.15rem; }
 .send-status code { font-size: 0.85em; background: var(--surface); padding: 0 0.25rem; border-radius: 4px; }
 .send-status a { color: var(--caramel); }
+
+/* ---------- Mini-cart peek ---------- */
+.peek { position: absolute; top: calc(100% + 12px); right: 0; width: 320px; padding: 0.9rem; border-radius: 16px; background: var(--bg); color: var(--text); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3); border: 1px solid rgba(var(--line-rgb), 0.1); animation: palIn 0.18s ease; z-index: 30; }
+.peek[hidden] { display: none; }
+.peek::before { content: ""; position: absolute; top: -7px; right: 40px; width: 14px; height: 14px; background: var(--bg); transform: rotate(45deg); border-left: 1px solid rgba(var(--line-rgb), 0.1); border-top: 1px solid rgba(var(--line-rgb), 0.1); }
+.peek-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; font-size: 0.88rem; }
+.peek-list li { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; padding: 0.35rem 0; border-bottom: 1px dashed rgba(var(--line-rgb), 0.15); }
+.peek-list li > span:first-child { display: grid; min-width: 0; }
+.peek-list small { color: var(--muted); font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.peek-empty { margin: 0 0 0.5rem; font-size: 0.88rem; color: var(--muted); }
+.peek-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; }
+.peek-foot .btn { color: var(--on-caramel); }

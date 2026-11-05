@@ -1598,3 +1598,10 @@ p { text-wrap: pretty; }
 .art-actions.ready .btn:last-child { animation: bump 0.6s ease 2; }
 .art-canvas { width: 100%; max-width: 360px; aspect-ratio: 1; border-radius: 50%; touch-action: none; cursor: crosshair; justify-self: center; filter: drop-shadow(0 20px 25px rgba(43, 29, 22, 0.25)); }
 @media (max-width: 800px) { .art-play { grid-template-columns: 1fr; padding: 1.25rem; gap: 1.5rem; } .art-canvas { max-width: 300px; } }
+
+/* ---------- Glossary ---------- */
+.gloss { font-style: normal; text-decoration: underline dotted var(--caramel); text-decoration-thickness: 2px; text-underline-offset: 3px; cursor: help; }
+.gloss:focus-visible { outline-offset: 1px; }
+.gloss-tip { position: fixed; z-index: 120; padding: 0.7rem 0.85rem; border-radius: 12px; background: var(--espresso); color: var(--cream); font-size: 0.82rem; line-height: 1.45; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); pointer-events: none; animation: fade 0.15s ease; }
+.gloss-tip strong { display: block; color: var(--caramel); text-transform: capitalize; margin-bottom: 0.15rem; }
+.gloss-tip[hidden] { display: none; }

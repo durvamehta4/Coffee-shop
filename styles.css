@@ -1653,3 +1653,5 @@ body:has(.me-panel:not([hidden])) .toast { opacity: 0; pointer-events: none; }
 @keyframes numflash { 30% { color: var(--caramel); } }
 .ob-total.num-flash, .tb-label.num-flash { animation-name: numflashLight; }
 @keyframes numflashLight { 30% { color: #ffd9b0; } }
+.lang-btn { font: 700 0.75rem Inter, sans-serif; letter-spacing: 0.04em; order: 3; }
+@media (max-width: 800px) { .nav .lang-btn { margin-left: auto; } .nav .lang-btn + .theme-toggle, .nav .theme-toggle#theme-toggle { margin-left: 0; } }

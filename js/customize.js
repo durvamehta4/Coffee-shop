@@ -1,5 +1,6 @@
 // Drink builder: intercepts "Add" on drinks, opens a sheet with options + a live layered-cup visual.
 (function () {
+  const t = (str) => (window.t ? window.t(str) : str);
   // Layer recipe per drink (relative parts, bottom → top).
   const RECIPES = {
     espresso: [["espresso", 3]],
@@ -49,7 +50,7 @@
     return `<div class="nutr" aria-live="polite">
       <div class="nutr-row"><span>⚡ Caffeine</span><strong>${n.caf} mg</strong></div>
       <div class="meter"><i style="width:${pct}%" class="${pct > 60 ? "hi" : ""}"></i></div>
-      <small>${pct}% of the 400 mg daily guideline${pct > 60 ? " · that's a strong one!" : ""}</small>
+      <small>${pct}% ${t("of the 400 mg daily guideline")}${pct > 60 ? " · " + t("that's a strong one!") : ""}</small>
       <div class="nutr-row cal"><span>🔥 Calories</span><strong>~${n.cal}</strong></div>
     </div>`;
   }
@@ -98,7 +99,7 @@
     if (state.size === "Large") return "";
     const more = Math.round((VOL.Large / VOL[state.size] - 1) * 100);
     const d = SIZES.find((x) => x.v === "Large").d - SIZES.find((x) => x.v === state.size).d;
-    return `<button type="button" class="upsell" data-upsize>⬆ Make it <b>Large</b> for +${fmt(d)} <span>${more}% more coffee</span></button>`;
+    return `<button type="button" class="upsell" data-upsize>⬆ ${t("Make it")} <b>${t("Large")}</b> ${t("for")} +${fmt(d)} <span>${more}% ${t("more coffee")}</span></button>`;
   }
   function group(name, label, opts, extra = "") {
     return `<fieldset class="opt-group"><legend>${label}</legend><div class="chips">${opts.map((o) => `
@@ -116,7 +117,7 @@
       group("size", "Size", SIZES.map((x) => (x.v === "Medium" ? { ...x, tag: "Most popular" } : x)), upsellHTML()) +
       group("temp", "Temperature", [{ v: "Hot" }, { v: "Iced" }]) +
       (MILKY(id) ? group("milk", "Milk", MILKS) : "") +
-      (SHOTTY(id) ? `<fieldset class="opt-group"><legend>Extra espresso shots <em>+$0.90 each</em></legend>
+      (SHOTTY(id) ? `<fieldset class="opt-group"><legend>${t("Extra espresso shots")} <em>${t("+$0.90 each")}</em></legend>
         <div class="stepper"><button type="button" data-shot="-1" aria-label="Fewer shots">−</button><output>${state.shots}</output><button type="button" data-shot="1" aria-label="More shots">+</button></div></fieldset>` : "") +
       group("sweet", "Sweetness", [{ v: "None" }, { v: "Light" }, { v: "Regular" }, { v: "Vanilla", d: 0.5 }]);
     sheet.querySelector(".builder-nutr").innerHTML = nutrHTML();

@@ -33,6 +33,7 @@ window.MENU = [
     { id: "bean-decaf", name: "Midnight Decaf", desc: "Swiss Water Process Peru · cocoa, brown sugar, plum.", price: 18, tags: ["vegan", "decaf"], food: true, retail: true, nocaf: true, roast: 3, color: "#5b6b8c", origin: "Cajamarca, Peru" },
   ]},
   { cat: "gifts", items: [
+    { id: "forward", name: "Pay-it-forward coffee", desc: "A coffee for a neighbor, pinned to our community board.", price: 3, tags: [], food: true, retail: true, hidden: true },
     { id: "giftcard", name: "Gift card", desc: "A handwritten gift card, ready with your pickup.", price: 25, tags: [], food: true, retail: true, hidden: true },
   ]},
 ];

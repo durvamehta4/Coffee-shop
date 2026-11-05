@@ -1045,3 +1045,27 @@ body.has-strip .toast { top: 120px; }
 .shared-banner div { display: grid; min-width: 0; }
 .shared-banner small { color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 @media (max-width: 600px) { .shared-banner { grid-template-columns: auto 1fr auto; } .shared-banner .btn { grid-column: 1 / -1; } .shared-banner #sb-x { grid-row: 1; grid-column: 3; } }
+
+/* ---------- Winter LTO ---------- */
+.winter-section { position: relative; overflow: hidden; color: #f4f1ec; background: radial-gradient(circle at 20% 0%, #3b5a6e, transparent 55%), linear-gradient(160deg, #1d2f3d, #142029 60%, #2a1a14); }
+.snow { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.winter-inner { position: relative; }
+.winter-head { max-width: 560px; }
+.winter-head .eyebrow { color: #f0c27b; }
+.winter-head p:last-child { opacity: 0.8; }
+.winter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+.winter-card {
+  padding: 1.5rem; border-radius: 22px; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px); display: flex; flex-direction: column; gap: 0.4rem; transition: transform 0.25s, background 0.25s;
+}
+.winter-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.11); }
+.winter-cup { height: 160px; display: grid; place-items: center; margin-bottom: 0.5rem; border-radius: 16px; background: radial-gradient(circle at 50% 70%, rgba(240, 194, 123, 0.25), transparent 70%); }
+.winter-cup svg { height: 150px; width: auto; }
+.winter-cup .cup-line { stroke: #f0dcc0; }
+.winter-card h3 { margin: 0; font-size: 1.3rem; }
+.winter-card p { margin: 0; opacity: 0.75; font-size: 0.92rem; flex: 1; }
+.winter-buy { display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; font-weight: 700; font-size: 1.15rem; }
+.tab-winter { border-color: #3b5a6e; color: #3b5a6e; }
+.tab-winter:hover, .tab-winter.active { background: #2d4757; color: #fff; border-color: #2d4757; }
+:root[data-theme="dark"] .tab-winter { border-color: #8fb3c9; color: #8fb3c9; }
+@media (max-width: 800px) { .winter-grid { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 78%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 0.5rem; } .winter-card { scroll-snap-align: start; } }

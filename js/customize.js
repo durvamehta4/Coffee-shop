@@ -14,14 +14,17 @@
     matcha: [["matcha", 3], ["milk", 4], ["foam", 1]],
     tea: [["tea", 7]],
     cocoa: [["choc", 6], ["cream", 2]],
+    gingerbread: [["ginger", 1], ["espresso", 2], ["milk", 5], ["foam", 1]],
+    pepmocha: [["choc", 2], ["espresso", 2], ["milk", 3], ["cream", 2]],
+    maplecortado: [["maple", 1], ["espresso", 3], ["oat", 3]],
   };
   const COLORS = {
     espresso: "#3b2416", water: "#7a4f33", milk: "#e9d8c2", foam: "#fbf4ea", brew: "#4b2c1b",
-    choc: "#5a3221", chai: "#c08a5a", matcha: "#8db255", tea: "#b77b3b", cream: "#fffdf8", oat: "#e6d3b3",
+    choc: "#5a3221", chai: "#c08a5a", matcha: "#8db255", tea: "#b77b3b", cream: "#fffdf8", oat: "#e6d3b3", ginger: "#a8652e", maple: "#c98a3c",
   };
   const SIZES = [{ v: "Small", d: -0.5, scale: 0.8 }, { v: "Medium", d: 0, scale: 0.9 }, { v: "Large", d: 0.75, scale: 1 }];
   const MILKS = [{ v: "Whole milk", d: 0 }, { v: "Oat", d: 0.6 }, { v: "Almond", d: 0.6 }, { v: "Skim", d: 0 }];
-  const MILKY = (id) => (RECIPES[id] || []).some(([l]) => ["milk", "foam"].includes(l));
+  const MILKY = (id) => (RECIPES[id] || []).some(([l]) => ["milk", "foam", "oat"].includes(l));
   const SHOTTY = (id) => (RECIPES[id] || []).some(([l]) => l === "espresso");
 
   const sheet = document.getElementById("builder");

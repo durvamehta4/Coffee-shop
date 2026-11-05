@@ -1,5 +1,10 @@
 // Central menu data — every feature (menu, cart, filters, quiz…) reads from here.
 window.MENU = [
+  { cat: "winter", items: [
+    { id: "gingerbread", name: "Gingerbread Latte", desc: "Molasses, ginger and cinnamon with espresso and steamed milk.", price: 5.75, tags: ["seasonal"], hot: true, seasonal: true },
+    { id: "pepmocha", name: "Peppermint Mocha", desc: "Dark chocolate, cool peppermint, espresso and whipped cream.", price: 5.95, tags: ["seasonal"], hot: true, seasonal: true },
+    { id: "maplecortado", name: "Maple Oat Cortado", desc: "Double ristretto cut with oat milk and a whisper of maple.", price: 5.25, tags: ["seasonal", "vegan"], hot: true, seasonal: true },
+  ]},
   { cat: "coffee", items: [
     { id: "espresso", name: "Espresso", desc: "Double shot of our house blend.", price: 3.0, tags: ["vegan"], hot: true },
     { id: "americano", name: "Americano", desc: "Espresso lengthened with hot water.", price: 3.5, tags: ["vegan"], hot: true },

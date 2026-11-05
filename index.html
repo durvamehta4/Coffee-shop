@@ -146,6 +146,19 @@
       </div>
     </section>
 
+    <!-- Winter menu -->
+    <section id="winter-menu" class="section winter-section">
+      <canvas class="snow" id="snow" aria-hidden="true"></canvas>
+      <div class="container winter-inner">
+        <div class="winter-head">
+          <p class="eyebrow">Limited time · <span id="winter-left"></span></p>
+          <h2>The winter menu is here.</h2>
+          <p>Three cozy drinks we only make when it's cold out. Back for the season, gone in January.</p>
+        </div>
+        <div class="winter-grid" id="winter-grid"></div>
+      </div>
+    </section>
+
     <!-- Reviews -->
     <section id="reviews" class="section reviews-section">
       <div class="container reviews-head">
@@ -191,11 +204,13 @@
           </div>
         </div>
         <div class="menu-tabs" role="tablist">
+          <button class="tab tab-winter" role="tab" aria-selected="false" data-tab="winter">Winter ❄</button>
           <button class="tab active" role="tab" aria-selected="true" data-tab="coffee">Coffee</button>
           <button class="tab" role="tab" aria-selected="false" data-tab="tea">Tea &amp; More</button>
           <button class="tab" role="tab" aria-selected="false" data-tab="food">Food</button>
         </div>
 
+        <div class="menu-panel" id="winter" role="tabpanel"></div>
         <div class="menu-panel active" id="coffee" role="tabpanel"></div>
 
         <div class="menu-panel" id="tea" role="tabpanel"></div>
@@ -438,5 +453,6 @@
   <script src="js/pwa.js"></script>
   <script src="js/feedback.js"></script>
   <script src="js/share.js"></script>
+  <script src="js/winter.js"></script>
 </body>
 </html>

@@ -5,7 +5,7 @@
   const results = document.getElementById("menu-results");
   const grid = document.getElementById("results-grid");
   const tabsEl = document.querySelector(".menu-tabs");
-  const panels = ["coffee", "tea", "food"].map((id) => document.getElementById(id));
+  const panels = ["winter", "coffee", "tea", "food"].map((id) => document.getElementById(id));
   const active = new Set();
   const TESTS = {
     vegan: (i) => i.tags.includes("vegan"),

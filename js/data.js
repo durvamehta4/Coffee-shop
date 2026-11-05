@@ -36,5 +36,8 @@ window.MENU = [
     { id: "giftcard", name: "Gift card", desc: "A handwritten gift card, ready with your pickup.", price: 25, tags: [], food: true, retail: true, hidden: true },
   ]},
 ];
+// Merchandising badges
+const BADGES = { latte: "Bestseller", flatwhite: "Barista pick", coldbrew: "Bestseller", matcha: "New", croissant: "Bestseller", pourover: "Barista pick", avotoast: "New" };
+window.MENU.forEach((c) => c.items.forEach((i) => { if (BADGES[i.id]) i.badge = BADGES[i.id]; if (i.seasonal) i.badge = "Seasonal"; }));
 window.MENU_INDEX = Object.fromEntries(window.MENU.flatMap((c) => c.items.map((i) => [i.id, { ...i, cat: c.cat }])));
 window.fmt = (n) => "$" + n.toFixed(2);

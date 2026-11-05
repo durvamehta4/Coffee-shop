@@ -13,6 +13,8 @@
   function card(i, sfx = "") {
     return `
         <article class="menu-card" data-id="${i.id}">
+          ${i.badge ? `<span class="ribbon ribbon-${i.badge.toLowerCase().replace(/\s+/g, "-")}">${{ Bestseller: "★ ", Seasonal: "❄ " }[i.badge] || ""}${i.badge}</span>` : ""}
+          <span class="diet">${i.tags.includes("vegan") ? `<i title="Vegan" aria-label="Vegan">🌱</i>` : ""}${i.nocaf ? `<i title="Caffeine-free" aria-label="Caffeine-free">🌙</i>` : ""}</span>
           <div class="menu-thumb ${i.food ? "food" : ""}" aria-hidden="true">${thumb(i, sfx)}</div>
           <div class="menu-card-body">
             <div class="menu-card-top"><h3>${i.name}</h3><span class="price">${fmt(i.price)}</span></div>

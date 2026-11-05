@@ -1,0 +1,10 @@
+{
+  "name": "Ember & Bean Coffee",
+  "short_name": "Ember & Bean",
+  "description": "Order ahead from Ember & Bean, small-batch coffee in Brewtown.",
+  "start_url": "./index.html#menu",
+  "display": "standalone",
+  "background_color": "#fffaf3",
+  "theme_color": "#2b1d16",
+  "icons": [{ "src": "assets/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

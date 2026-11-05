@@ -1481,3 +1481,20 @@ p { text-wrap: pretty; }
 .qo-status.lastcall .dot { background: #ffd2c4; animation: pulse 1s infinite; }
 .qo-rush { margin: 0.6rem 0 0; font-size: 0.82rem; color: var(--cream); opacity: 0.9; }
 .qo-rush b { color: #f0c27b; }
+
+/* ---------- Flavor wheel ---------- */
+.flavor { display: grid; grid-template-columns: 260px 1fr; gap: 2rem; align-items: center; max-width: 720px; margin: 2rem auto 0; }
+.wheel { width: 100%; height: auto; overflow: visible; }
+.slice { cursor: pointer; outline: none; transition: transform 0.25s, opacity 0.25s; transform-origin: 130px 130px; }
+.slice path { stroke: var(--bg-alt); stroke-width: 2; }
+.slice text { fill: #fff; font: 600 10.5px Inter, sans-serif; pointer-events: none; }
+.slice:hover, .slice:focus-visible { transform: scale(1.05); }
+.flavor.picking .slice { opacity: 0.35; }
+.flavor.picking .slice.on { opacity: 1; transform: scale(1.08); }
+.wheel-hub { fill: var(--surface); }
+.hub-t { font: 600 10px Inter, sans-serif; fill: var(--muted); }
+.flavor-out p { margin: 0 0 0.5rem; }
+.fo-label { font-family: "Playfair Display", serif; font-size: 2rem; font-weight: 700; color: var(--c); }
+.bean { transition: opacity 0.3s, transform 0.3s, filter 0.3s; }
+.bean.dim { opacity: 0.35; filter: grayscale(0.6); transform: scale(0.97); }
+@media (max-width: 700px) { .flavor { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 1rem; } .wheel { width: 240px; } }

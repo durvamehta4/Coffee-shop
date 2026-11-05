@@ -154,20 +154,45 @@
     </section>
 
     <!-- Visit -->
-    <section id="visit" class="section">
+    <section id="visit" class="section visit-section">
       <div class="container visit">
-        <div>
-          <h2>Visit us</h2>
-          <p class="address">123 Roast Street<br />Brewtown, CA 90210</p>
-          <p><a href="tel:+15555550123">(555) 555-0123</a></p>
+        <div class="map-card">
+          <svg class="map" viewBox="0 0 600 420" role="img" aria-label="Map showing Ember &amp; Bean on Roast Street, next to Linden Park">
+            <rect width="600" height="420" class="map-land"/>
+            <path d="M-10 330 C 120 300, 200 380, 330 350 S 520 300, 610 340 L610 430 L-10 430 Z" class="map-water"/>
+            <rect x="380" y="40" width="170" height="130" rx="18" class="map-park"/>
+            <circle cx="430" cy="90" r="16" class="map-tree"/><circle cx="470" cy="120" r="20" class="map-tree"/><circle cx="510" cy="80" r="14" class="map-tree"/>
+            <g class="map-roads">
+              <path d="M0 210 H600"/><path d="M0 100 H360"/><path d="M180 0 V320"/><path d="M360 0 V330"/><path d="M60 0 L 120 330"/>
+            </g>
+            <g class="map-blocks">
+              <rect x="200" y="120" width="60" height="70" rx="6"/><rect x="275" y="120" width="70" height="40" rx="6"/>
+              <rect x="200" y="230" width="140" height="60" rx="6"/><rect x="20" y="230" width="60" height="70" rx="6"/>
+              <rect x="200" y="20" width="140" height="62" rx="6"/><rect x="380" y="230" width="90" height="60" rx="6"/>
+            </g>
+            <text x="20" y="203" class="map-label">ROAST ST</text>
+            <text x="190" y="315" class="map-label" transform="rotate(-90 190 315)">BEAN AVE</text>
+            <text x="420" y="160" class="map-label park">LINDEN PARK</text>
+            <g class="map-pin" transform="translate(300 210)">
+              <circle r="26" class="pin-pulse"/>
+              <path d="M0 0 C -18 -22 -18 -44 0 -48 C 18 -44 18 -22 0 0 Z" class="pin-body"/>
+              <circle cy="-30" r="7" fill="#fff"/>
+            </g>
+          </svg>
+          <div class="map-actions">
+            <a class="btn btn-small" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=123+Roast+Street+Brewtown+CA">Get directions ↗</a>
+            <a class="btn btn-small btn-ghost" href="tel:+15555550123">Call us</a>
+          </div>
         </div>
-        <div>
+        <div class="visit-info">
+          <p class="eyebrow">Come say hi</p>
+          <h2>Visit us</h2>
+          <p class="address">123 Roast Street, Brewtown, CA 90210<br /><span class="muted small">Corner of Bean Ave, across from Linden Park</span></p>
+          <ul class="amenities">
+            <li>📶 Free Wi-Fi</li><li>🔌 Outlets at every table</li><li>🐕 Dog-friendly patio</li><li>♿ Step-free access</li><li>🚲 Bike racks</li>
+          </ul>
           <h3>Hours</h3>
-          <table class="hours">
-            <tr><td>Monday – Friday</td><td>7:00 am – 6:00 pm</td></tr>
-            <tr><td>Saturday</td><td>8:00 am – 5:00 pm</td></tr>
-            <tr><td>Sunday</td><td>8:00 am – 3:00 pm</td></tr>
-          </table>
+          <ul class="week" id="week"></ul>
           <p class="open-status" id="open-status"></p>
         </div>
       </div>

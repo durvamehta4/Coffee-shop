@@ -67,3 +67,14 @@ form.addEventListener("submit", (e) => {
 
 // ---------- Footer year ----------
 document.getElementById("year").textContent = new Date().getFullYear();
+
+// ---------- Weekly hours list (today highlighted) ----------
+(function () {
+  const el = document.getElementById("week");
+  if (!el) return;
+  const names = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const t = (h) => (h === 12 ? "12 pm" : h > 12 ? h - 12 + " pm" : h + " am");
+  const today = new Date().getDay();
+  el.innerHTML = [1, 2, 3, 4, 5, 6, 0].map((d) =>
+    `<li class="${d === today ? "today" : ""}"><span>${names[d]}${d === today ? " <em>Today</em>" : ""}</span><span>${t(HOURS[d][0])} – ${t(HOURS[d][1])}</span></li>`).join("");
+})();

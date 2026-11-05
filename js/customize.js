@@ -93,10 +93,17 @@
     return Math.max(0, base + s + m + v + state.shots * 0.9);
   }
 
+  const VOL = { Small: 8, Medium: 12, Large: 16 }; // oz
+  function upsellHTML() {
+    if (state.size === "Large") return "";
+    const more = Math.round((VOL.Large / VOL[state.size] - 1) * 100);
+    const d = SIZES.find((x) => x.v === "Large").d - SIZES.find((x) => x.v === state.size).d;
+    return `<button type="button" class="upsell" data-upsize>⬆ Make it <b>Large</b> for +${fmt(d)} <span>${more}% more coffee</span></button>`;
+  }
   function group(name, label, opts, extra = "") {
     return `<fieldset class="opt-group"><legend>${label}</legend><div class="chips">${opts.map((o) => `
       <label class="chip"><input type="radio" name="${name}" value="${o.v}" ${state[name] === o.v ? "checked" : ""}/>
-      <span>${o.v}${o.d ? ` <em>${o.d > 0 ? "+" : "−"}${fmt(Math.abs(o.d))}</em>` : ""}</span></label>`).join("")}</div>${extra}</fieldset>`;
+      <span>${o.v}${o.d ? ` <em>${o.d > 0 ? "+" : "−"}${fmt(Math.abs(o.d))}</em>` : ""}${o.tag ? ` <i class="pop">${o.tag}</i>` : ""}</span></label>`).join("")}</div>${extra}</fieldset>`;
   }
 
   function render() {
@@ -106,18 +113,21 @@
     sheet.querySelector(".builder-desc").textContent = item.desc;
     sheet.querySelector(".builder-price").textContent = fmt(price(id));
     sheet.querySelector(".builder-opts").innerHTML =
-      group("size", "Size", SIZES) +
+      group("size", "Size", SIZES.map((x) => (x.v === "Medium" ? { ...x, tag: "Most popular" } : x)), upsellHTML()) +
       group("temp", "Temperature", [{ v: "Hot" }, { v: "Iced" }]) +
       (MILKY(id) ? group("milk", "Milk", MILKS) : "") +
       (SHOTTY(id) ? `<fieldset class="opt-group"><legend>Extra espresso shots <em>+$0.90 each</em></legend>
         <div class="stepper"><button type="button" data-shot="-1" aria-label="Fewer shots">−</button><output>${state.shots}</output><button type="button" data-shot="1" aria-label="More shots">+</button></div></fieldset>` : "") +
       group("sweet", "Sweetness", [{ v: "None" }, { v: "Light" }, { v: "Regular" }, { v: "Vanilla", d: 0.5 }]);
     sheet.querySelector(".builder-nutr").innerHTML = nutrHTML();
+    const combo = sheet.querySelector(".combo");
+    combo.querySelector("input").checked = !!state.combo;
+    sheet.querySelector(".builder-price").textContent = fmt(price(state.id) + (state.combo ? MENU_INDEX.croissant.price - 1 : 0));
   }
 
   function open(id, preset = {}) {
     const item = MENU_INDEX[id];
-    Object.assign(state, { id, size: "Medium", temp: item.hot === false ? "Iced" : "Hot", milk: "Whole milk", shots: 0, sweet: "None" }, preset);
+    Object.assign(state, { id, size: "Medium", temp: item.hot === false ? "Iced" : "Hot", milk: "Whole milk", shots: 0, sweet: "None", combo: false }, preset);
     render();
     sheet.classList.add("open"); document.getElementById("builder-overlay").classList.add("open");
     document.body.classList.add("no-scroll");
@@ -135,9 +145,11 @@
   document.dispatchEvent(new CustomEvent("builder:ready"));
 
   sheet.addEventListener("change", (e) => {
+    if (e.target.name === "combo") { state.combo = e.target.checked; render(); return; }
     if (e.target.name) { state[e.target.name] = e.target.value; render(); }
   });
   sheet.addEventListener("click", (e) => {
+    if (e.target.closest("[data-upsize]")) { state.size = "Large"; render(); return; }
     const sh = e.target.closest("[data-shot]");
     if (sh) { state.shots = Math.min(3, Math.max(0, state.shots + +sh.dataset.shot)); render(); }
     if (e.target.closest(".builder-close")) close();
@@ -151,6 +163,7 @@
     if (state.shots) opts.shots = `+${state.shots} shot${state.shots > 1 ? "s" : ""}`;
     if (state.sweet !== "None") opts.sweet = state.sweet === "Vanilla" ? "Vanilla" : `${state.sweet} sweet`;
     Cart.add(state.id, opts, price(state.id));
+    if (state.combo) Cart.add("croissant");
     close();
     document.dispatchEvent(new CustomEvent("builder:added", { detail: { id: state.id } }));
   });

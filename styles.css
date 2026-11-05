@@ -1465,3 +1465,15 @@ p { text-wrap: pretty; }
 .welcome-form { display: flex; gap: 0.4rem; }
 .welcome-form input { flex: 1; min-width: 0; padding: 0.5rem 0.75rem; border-radius: 999px; border: 1px solid rgba(var(--line-rgb), 0.25); background: var(--bg); color: var(--text); font: inherit; font-size: 0.88rem; }
 @media (max-width: 800px) { .welcome { left: 0.75rem; right: 0.75rem; width: auto; bottom: 5.25rem; grid-template-columns: 64px 1fr; } .welcome-art { height: 64px; font-size: 1.8rem; } }
+
+/* ---------- Builder upsells ---------- */
+.pop { font-style: normal; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; background: var(--caramel); color: #fff; padding: 0.1rem 0.4rem; border-radius: 999px; margin-left: 0.2rem; vertical-align: 1px; }
+.upsell { margin-top: 0.5rem; display: flex; align-items: center; gap: 0.4rem; width: 100%; padding: 0.55rem 0.8rem; border-radius: 12px; border: 1.5px dashed var(--caramel); background: rgba(200, 131, 74, 0.08); color: var(--text); font: inherit; font-size: 0.88rem; cursor: pointer; text-align: left; }
+.upsell span { margin-left: auto; font-size: 0.78rem; color: #3d7a46; font-weight: 600; }
+.upsell:hover { background: rgba(200, 131, 74, 0.16); }
+.combo { position: relative; display: flex; align-items: center; gap: 0.6rem; margin-top: 0.6rem; padding: 0.65rem 0.8rem; border-radius: 12px; border: 1.5px solid rgba(var(--line-rgb), 0.15); cursor: pointer; font-size: 0.88rem; }
+.combo input { position: absolute; opacity: 0; }
+.combo input:checked + .fw-check { background: #3d7a46; }
+.combo input:checked + .fw-check::after { content: "✓"; color: #fff; font-size: 0.8rem; font-weight: 700; }
+.combo s { color: var(--muted); }
+.combo:has(input:checked) { border-color: #3d7a46; background: rgba(61, 122, 70, 0.07); }

@@ -988,3 +988,16 @@ body:has(.hero) .site-header { position: fixed; left: 0; right: 0; }
 .install-card img { border-radius: 10px; }
 .install-card div { display: grid; font-size: 0.85rem; }
 .install-card span { color: var(--muted); }
+
+/* ---------- Promo strip ---------- */
+.promo-strip { background: var(--caramel); color: #fff; font-size: 0.85rem; }
+.promo-inner { display: flex; align-items: center; justify-content: center; gap: 1rem; min-height: 36px; position: relative; text-align: center; padding: 0.35rem 2rem; }
+.promo-strip a { color: #fff; font-weight: 600; margin-left: 0.4rem; }
+.promo-strip b { font-variant-numeric: tabular-nums; }
+.promo-x { position: absolute; right: 0; background: none; border: 0; color: #fff; opacity: 0.8; cursor: pointer; }
+body.has-strip .hero { padding-top: 100px; }
+body.has-strip .drawer { z-index: 50; }
+@media (max-width: 800px) {
+  body.has-strip .nav-links { top: calc(64px + 36px); }
+  .promo-inner { font-size: 0.78rem; padding-right: 2rem; justify-content: flex-start; text-align: left; }
+}

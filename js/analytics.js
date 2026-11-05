@@ -49,7 +49,7 @@
     panel.innerHTML = `<strong>Funnel (this session)</strong>` + steps.map((s, i) => {
       const n = counts[s] || 0, prev = i ? counts[steps[i - 1]] || 0 : n;
       return `<div class="fd-row"><span>${s}</span><b>${n}</b><i style="width:${Math.min(100, (n / top) * 100)}%"></i><small>${i && prev ? Math.round((n / prev) * 100) + "%" : ""}</small></div>`;
-    }).join("") + `<small>${window.dataLayer.length} events in dataLayer</small>`;
+    }).join("") + `<small>${window.dataLayer.length} events in dataLayer</small>` + (window.Experiments ? `<small>A/B: ${Object.entries(Experiments.all()).map(([k, v]) => k + "=" + v).join(", ")}</small>` : "");
   }
   if (debug) renderDebug();
 })();

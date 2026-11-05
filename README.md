@@ -49,3 +49,7 @@ Add `?debug=funnel` to the URL to see a live conversion funnel.
 ## Placeholder content
 
 The shop name, address, phone, prices, events and the reviews in `js/reviews.js` are sample content. Replace the reviews with real customer quotes (with permission) before going live.
+
+## Experiments
+
+`js/experiments.js` runs lightweight A/B tests with sticky per-visitor variants. Each exposure pushes `experiment_exposure` and each purchase pushes `experiment_conversion` to `window.dataLayer`. Force a variant for QA with `?ab=hero_cta:skip,checkout_cta:paylater`.

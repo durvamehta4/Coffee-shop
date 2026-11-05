@@ -3,11 +3,11 @@
   const bar = document.createElement("nav");
   bar.className = "tabbar"; bar.setAttribute("aria-label", "Quick navigation");
   bar.innerHTML = `
-    <a href="#home" class="tb"><span aria-hidden="true">🏠</span>Home</a>
-    <a href="#menu" class="tb"><span aria-hidden="true">☕</span>Menu</a>
-    <button class="tb" onclick="openPalette()"><span aria-hidden="true">🔍</span>Search</button>
-    <button class="tb" onclick="openMe()"><span aria-hidden="true">👤</span>Me</button>
-    <button class="tb tb-order" data-open-cart><span class="tb-ico" aria-hidden="true">🛍<b class="tb-badge" hidden></b></span><span class="tb-label">Order</span></button>`;
+    <a href="#home" class="tb"><svg class="ico" aria-hidden="true"><use href="#i-home"/></svg>Home</a>
+    <a href="#menu" class="tb"><svg class="ico" aria-hidden="true"><use href="#i-cup"/></svg>Menu</a>
+    <button class="tb" onclick="openPalette()"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>Search</button>
+    <button class="tb" onclick="openMe()"><svg class="ico" aria-hidden="true"><use href="#i-user"/></svg>Me</button>
+    <button class="tb tb-order" data-open-cart><span class="tb-ico" aria-hidden="true"><svg class="ico"><use href="#i-bag"/></svg><b class="tb-badge" hidden></b></span><span class="tb-label">Order</span></button>`;
   document.body.appendChild(bar);
   function update(e) {
     const n = Cart.count(), b = bar.querySelector(".tb-badge"), lbl = bar.querySelector(".tb-label");

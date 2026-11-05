@@ -5,7 +5,7 @@
   const current = () => document.documentElement.dataset.theme || (mq.matches ? "dark" : "light");
   function sync() {
     const dark = current() === "dark";
-    btn.textContent = dark ? "☀️" : "🌙";
+    btn.innerHTML = `<svg class="ico"><use href="#i-${dark ? "sun" : "moon"}"/></svg>`;
     btn.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
   }
   btn.addEventListener("click", () => {

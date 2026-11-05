@@ -1565,3 +1565,10 @@ p { text-wrap: pretty; }
 .b-pick strong { font-size: 0.9rem; }
 @media (max-width: 1000px) { .team-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .team-grid { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 80%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 0.5rem; } .barista { scroll-snap-align: center; } }
+
+/* ---------- Icon system ---------- */
+.ico { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; display: block; }
+.theme-toggle .ico { width: 18px; height: 18px; }
+.tb .ico { width: 22px; height: 22px; }
+.tb-order .ico { width: 22px; height: 22px; }
+.tb.current { color: var(--caramel); }

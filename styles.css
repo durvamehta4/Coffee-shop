@@ -1149,3 +1149,30 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius
 .forward input:focus-visible + .fw-check { outline: 3px solid var(--caramel); outline-offset: 2px; }
 .fw-text { display: grid; gap: 0.15rem; font-size: 0.88rem; }
 .fw-text small { color: var(--muted); }
+
+/* ---------- Editorial story ---------- */
+.story-top { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; }
+.pull {
+  margin: 0; font-family: "Playfair Display", serif; font-size: clamp(1.8rem, 3.6vw, 2.9rem); line-height: 1.2;
+  padding-left: 1.5rem; border-left: 4px solid var(--caramel);
+}
+.pull em { color: var(--caramel); }
+.story-text p:not(.eyebrow) { color: var(--muted); }
+.journey { list-style: none; padding: 0; margin: 4rem 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; position: relative; counter-reset: step; }
+.journey::before { content: ""; position: absolute; top: 32px; left: 8%; right: 8%; border-top: 2px dashed rgba(var(--line-rgb), 0.25); }
+.journey li { position: relative; text-align: center; counter-increment: step; }
+.journey svg {
+  width: 64px; height: 64px; padding: 12px; border-radius: 50%; background: var(--surface); box-shadow: var(--shadow);
+  fill: none; stroke: var(--caramel); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; position: relative;
+}
+.journey li::after {
+  content: counter(step); position: absolute; top: -4px; left: calc(50% + 18px); width: 22px; height: 22px; border-radius: 50%;
+  background: var(--espresso); color: var(--cream); font-size: 0.72rem; font-weight: 700; display: grid; place-items: center;
+}
+.journey h3 { margin: 0.9rem 0 0.3rem; }
+.journey p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+@media (max-width: 800px) {
+  .story-top { grid-template-columns: 1fr; gap: 1.5rem; }
+  .journey { grid-template-columns: 1fr 1fr; gap: 2rem 1rem; }
+  .journey::before { display: none; }
+}

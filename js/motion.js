@@ -21,7 +21,7 @@
 
   if (reduce) return;
   // Reveal: tag elements, stagger siblings.
-  const SEL = ".section h2, .section-sub, .about-text p, .features li, .menu-card, .quiz, .club-card, .club-copy, .visit > div, .contact-form, .reviews-head";
+  const SEL = ".section h2, .section-sub, .pull, .story-text, .journey li, .winter-card, .bean, .review-rows, .cater, .menu-card, .quiz, .club-card, .club-copy, .visit > div, .contact-form, .reviews-head";
   const obs = new IntersectionObserver((es) => es.forEach((e) => {
     if (e.isIntersecting) { e.target.classList.add("in"); obs.unobserve(e.target); }
   }), { rootMargin: "0px 0px -8% 0px" });

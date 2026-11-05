@@ -100,6 +100,56 @@ await test("shared order link round-trips into another cart", async () => {
   await p.context().close();
 });
 
+await test("hub anchors open the right tab", async () => {
+  const p = await page();
+  await p.click('.nav-links a[href="#gifts"]');
+  assert(await p.isVisible("#gift-form"), "gifts tab visible");
+  assert(await p.evaluate(() => document.getElementById("beans").hidden), "beans tab hidden");
+  await p.context().close();
+});
+
+await test("⌘K palette adds an item with the keyboard", async () => {
+  const p = await page();
+  await p.keyboard.press("Control+k");
+  await p.waitForFunction(() => document.activeElement && document.activeElement.id === "pal-q");
+  await p.keyboard.type("croissant"); await p.keyboard.press("Enter");
+  await p.waitForFunction(() => Cart.lines.length > 0);
+  assert(await p.evaluate(() => Cart.lines.some((l) => l.id === "croissant")), "croissant in cart");
+  await p.context().close();
+});
+
+await test("Spanish toggle translates and reverts", async () => {
+  const p = await page();
+  await p.click(".lang-btn");
+  assert((await p.textContent(".nav-links a")) === "Menú" && (await p.evaluate(() => document.documentElement.lang)) === "es", "translated");
+  await p.click(".lang-btn");
+  assert((await p.textContent(".nav-links a")) === "Menu", "reverted");
+  await p.context().close();
+});
+
+await test("express reorder lands on pre-filled checkout", async () => {
+  const p = await page();
+  await p.evaluate(() => localStorage.setItem("eb-last-order", JSON.stringify({ no: "EB-1", name: "Ana", at: new Date(Date.now() - 864e5).toISOString(), lines: [{ key: "croissant|{}", id: "croissant", name: "Butter Croissant", price: 3.5, qty: 1, opts: {} }] })));
+  await p.evaluate(() => localStorage.setItem("eb-rated", '["EB-1"]'));
+  await p.reload(); await p.click(".btn-usual");
+  await p.waitForSelector("#checkout-form:not([hidden])");
+  assert(await p.isVisible("#checkout-form"), "checkout visible");
+  assert((await p.inputValue("#cname")) === "Ana", "name pre-filled");
+  await p.context().close();
+});
+
+await test("orders POST to the configured endpoint, with QR pass", async () => {
+  const p = await page(1280, "2026-11-04T09:00:00");
+  const got = [];
+  await p.route("**/hook", (r) => { got.push(JSON.parse(r.request().postData())); r.fulfill({ status: 200, body: "{}" }); });
+  await p.evaluate(() => { SHOP_CONFIG.ORDER_ENDPOINT = location.origin + "/hook"; Cart.add("muffin"); });
+  await p.click(".cart-btn"); await p.click("#to-checkout"); await p.fill("#cname", "Lee");
+  await p.click("#checkout-form button[type=submit]"); await p.waitForTimeout(500);
+  assert(got.length === 1 && got[0].name === "Lee" && got[0].lines[0].id === "muffin", "order delivered");
+  assert(/Sent to the shop/.test(await p.textContent("#confirm-send")), "sent status shown");
+  await p.context().close();
+});
+
 for (const scheme of ["light", "dark"]) {
   await test(`no WCAG 2 A/AA violations (axe-core, ${scheme})`, async () => {
     const AXE = "https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js"; // allowed by the site's CSP
